@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202153153) do
+ActiveRecord::Schema.define(version: 20171202164328) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "name"
+    t.decimal "amount"
+    t.string "category"
+    t.boolean "regular"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.string "name"
+    t.decimal "amount"
+    t.string "category"
+    t.boolean "regular"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+  end
+
+  create_table "savings", force: :cascade do |t|
+    t.decimal "amount"
+    t.boolean "regular"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

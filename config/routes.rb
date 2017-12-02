@@ -10,6 +10,11 @@ get '/contact', to: 'pages#contact'
 resources :users
 get 'users/new', as: 'signup'
 get '/signup',		to: 'users#new'
+post '/signup',		to: 'users#create'
   
-
+#entries
+resources :incomes
+resources :expenses
+resources :savings
+get '/entries/fixed_items'
 end

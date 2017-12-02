@@ -8,4 +8,8 @@ class User < ApplicationRecord
 						uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
+
+	has_many :incomes
+	has_many :expenses
+	has_many :savings
 end

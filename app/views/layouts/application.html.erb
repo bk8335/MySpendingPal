@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<%= render '/google_analytics' %>
     <title>Myspendingpal</title>
     <%= csrf_meta_tags %>
 
@@ -10,5 +11,6 @@
 
   <body>
     <%= yield %>
+    <%= render 'pages/footer' %>
   </body>
 </html>

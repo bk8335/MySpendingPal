@@ -1,5 +1,37 @@
 Rails.application.routes.draw do
  
+  get 'savings/new'
+
+  get 'savings/show'
+
+  get 'savings/edit'
+
+  get 'savings/destroy'
+
+  get 'expenses/new'
+
+  get 'expenses/show'
+
+  get 'expenses/edit'
+
+  get 'expenses/destroy'
+
+  get 'incomes/new'
+
+  get 'incomes/show'
+
+  get 'incomes/edit'
+
+  get 'incomes/destroy'
+
+  # get 'income/new'
+
+  get 'income/show'
+
+  get 'income/edit'
+
+  get 'income/destroy'
+
   get 'sessions/new'
 
 # static pages
@@ -9,7 +41,16 @@ get '/about', to: 'pages#about'
 get '/contact', to: 'pages#contact'
 
 #users  
-resources :users
+# resources :users do
+# 	#entries
+# 	resources :incomes
+# 	resources :expenses
+# 	resources :savings
+# 	get '/entries/fixed_items'
+# end
+resources :users do
+	  resources :incomes, only: [:new, :create]
+end
 get '/signup',		to: 'users#new'
 post '/signup',		to: 'users#create'
   

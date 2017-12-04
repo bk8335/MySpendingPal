@@ -1,4 +1,9 @@
 <h1>Show</h1>
-<p>Name - <%= @user.name %></p>
-<p>Email - <%= @user.email %></p>
-<p>User id - <strong><%= @user.id %></strong></p>
+<h2>Welcome <%= @user.name%>!</h2>
+
+<h3>Add regular income/outgoings here to calcuate your daily budget</h3>
+<ul>
+	<li><%= link_to "Income", new_user_income_path(@user)%></li>
+	<li><%= link_to "Expenses", new_expense_path%></li>
+	<li><%= link_to "Savings (target)", new_saving_path%></li>
+</ul>

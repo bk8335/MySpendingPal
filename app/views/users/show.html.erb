@@ -7,3 +7,6 @@
 	<li><%= link_to "Expenses", new_expense_path%></li>
 	<li><%= link_to "Savings (target)", new_saving_path%></li>
 </ul>
+
+<p><%= link_to "Update account info", edit_user_path(current_user) %></p>
+<p><%= link_to "Log out", logout_path, method: :delete %></p>

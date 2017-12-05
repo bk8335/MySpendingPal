@@ -9,7 +9,7 @@ class IncomesController < ApplicationController
   		flash[:success] = "You just added an income!"
   		redirect_to root_url
   	else
-  		flash[:danger] = "You suck"
+  		flash[:danger] = "You suck at adding an income"
   	end
   end
 

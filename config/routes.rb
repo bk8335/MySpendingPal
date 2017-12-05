@@ -34,6 +34,8 @@ get '/contact', to: 'pages#contact'
 # end
 resources :users do
 	  resources :incomes
+	  resources :expenses
+	  resources :savings
 end
 get '/signup',		to: 'users#new'
 post '/signup',		to: 'users#create'

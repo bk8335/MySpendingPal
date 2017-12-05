@@ -1,2 +1,17 @@
-<h1>Savings#new</h1>
-<p>Find me in app/views/savings/new.html.erb</p>
+<h1>Add a Savings goal</h1>
+<h2>This can be thought of as an expense, except you'll still have the money at the end of the month</h2>
+<h2>By taking away savings target from your day to day spending, you'll have a more accurate daily budget</h2>
+
+<%= form_for(@saving) do |f| %>
+	
+	<%= f.label :name %>
+	<%= f.text_field :name, class: "form-control" %>
+
+	<%= f.label :amount %>
+	<%= f.number_field :amount, step: 0.01, min: 0, class: "form-control" %>
+
+	<%= f.label "Regular?" %>
+	<%= f.check_box :regular, class: "form-control" %>
+
+	<%= f.submit %>
+<% end %>

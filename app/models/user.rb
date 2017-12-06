@@ -41,37 +41,31 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def daily_budget
+  def daily_budget(user)
     days_per_month = Time.days_in_month(Date.current.month)
-    disposable_income = recurring_incomes - recurring_expenses - recurring_savings
+    disposable_income = recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
     budget_per_day = disposable_income / days_per_month
   end
 
-  def recurring_incomes
-    @user = User.first
+  def recurring_incomes(user)
     money_in = 0
-    
-    @user.incomes.all.each do |income|
+    user.incomes.all.each do |income|
       money_in += income.amount
     end
     money_in
   end
 
-  def recurring_expenses
-    @user = User.first
+  def recurring_expenses(user)
     money_out = 0
-    
-    @user.expenses.all.each do |expense|
+    user.expenses.all.each do |expense|
       money_out += expense.amount
     end
     money_out
   end
 
-  def recurring_savings
-    @user = User.first
+  def recurring_savings(user)
     savings_goal = 0
-    
-    @user.savings.all.each do |saving|
+    user.savings.all.each do |saving|
       savings_goal += saving.amount
     end
     savings_goal

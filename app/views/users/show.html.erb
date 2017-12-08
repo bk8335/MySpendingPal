@@ -8,26 +8,83 @@
 	<li><%= link_to "Savings (target)", new_user_saving_path(@user)%></li>
 </ul>
 <hr>
-<h2>Your daily budget is £<%= @user.daily_budget(@user) %> </h2>
+<h2>Your daily budget is <%= @user.currency_symbol(@user) %><%= @user.daily_budget(@user) %> </h2>
 
 <hr>
 <h2>Your current entries</h2>
-
 <h3>Incomes</h3>
-<% @incomes.each do |income| %>
-	<%= income.amount %>
+<% if @incomes.empty? %>
+	<p>You haven't added any incomes yet!</p>
+	<%= link_to "Add you first income entry", new_user_income_path(@user)%>
+<% else %>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Category</th>
+			<th>Date</th>
+			<th>Regular?</th>
+		</tr>
+	<% @incomes.each do |income| %>
+		<tr>
+			<td><%= income.name %></td>
+			<td><%= @user.currency_symbol(@user) %><%= income.amount %></td>
+			<td><%= income.category %></td>
+			<td><%= income.date %></td>
+			<td><%= income.regular %></td>
+		</tr>
+	<% end %>
+	</table>
+	<%= link_to "Add additional saving (targets)", new_user_saving_path(@user)%>
 <% end %>
 
 <h3>Expenses</h3>
-<% @expenses.each do |expense| %>
-	<%= expense.amount %>
+<% if @expenses.empty? %>
+	<p>You haven't added any expenses yet!</p>
+	<%= link_to "Add you first expense entry", new_user_expense_path(@user)%>
+<% else %>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Category</th>
+			<th>Date</th>
+			<th>Regular?</th>
+		</tr>
+	<% @expenses.each do |expense| %>
+	<tr>
+		<td><%= expense.name %></td>
+		<td><%= @user.currency_symbol(@user) %><%= expense.amount %></td>
+		<td><%= expense.category %></td>
+		<td><%= expense.date %></td>
+		<td><%= expense.regular %></td>
+	</tr>
+	<% end %>
+	</table>
+	<%= link_to "Add additional expenses", new_user_expense_path(@user)%>
 <% end %>
 
 <h3>Savings</h3>
-<% @savings.each do |saving| %>
-	<%= saving.amount %>
+<% if @savings.empty? %>
+	<p>You haven't added any savings yet!</p>
+	<%= link_to "Add you first saving entry", new_user_saving_path(@user)%>
+<% else %>
+	<table>
+	<tr>
+		<th>Name</th>
+		<th>Amount</th>
+		<th>Regular</th>
+	</tr>	
+	<% @savings.each do |saving| %>
+	<tr>
+		<td><%= saving.name %></td>
+		<td><%= @user.currency_symbol(@user) %><%= saving.amount %></td>
+		<td><%= saving.regular %></td>
+	</tr>
+	<% end %>
+	</table>
+	<%= link_to "Add additional savings", new_user_saving_path(@user)%>
 <% end %>
-
 
 <hr>
 <p><%= link_to "Update account info", edit_user_path(current_user) %></p>

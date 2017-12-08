@@ -46,7 +46,8 @@ private
   		:name,
   		:email,
   		:password,
-  		:password_confirmation
+  		:password_confirmation,
+      :primary_currency
   	)
   end
 

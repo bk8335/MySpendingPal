@@ -44,7 +44,7 @@ class User < ApplicationRecord
   def daily_budget(user)
     days_per_month = Time.days_in_month(Date.current.month)
     disposable_income = recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
-    budget_per_day = disposable_income / days_per_month
+    budget_per_day = (disposable_income / days_per_month).round(2)
   end
 
   def recurring_incomes(user)
@@ -69,5 +69,17 @@ class User < ApplicationRecord
       savings_goal += saving.amount
     end
     savings_goal
+  end
+
+  def currency_symbol(user)
+    if user.primary_currency == "GBP"
+      "£"
+    elsif user.primary_currency == "EUR"
+      "€"
+    elsif user.primary_currency == "USD"
+      "$"
+    else
+      "£"
+    end
   end
 end

@@ -20,6 +20,10 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    @expense = Expense.find(params[:id])
+    @expense.destroy
+    flash[:success] = "You deleted the expense entry"
+    redirect_to root_url
   end
 
   private

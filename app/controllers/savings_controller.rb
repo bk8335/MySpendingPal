@@ -20,6 +20,10 @@ class SavingsController < ApplicationController
   end
 
   def destroy
+    @saving = Saving.find(params[:id])
+    @saving.destroy
+    flash[:success] = "You deleted the saving entry"
+    redirect_to root_url
   end
 
   private

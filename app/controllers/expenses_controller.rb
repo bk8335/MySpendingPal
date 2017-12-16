@@ -17,6 +17,18 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    @expense = Expense.find(params[:id])
+  end
+
+  def update
+     @expense = Expense.find(params[:id])
+    if @expense.update_attributes(expense_params)
+      flash[:success] = "Expense entry updated"
+      redirect_to root_url
+    else
+      flash[:error] = @expense.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy

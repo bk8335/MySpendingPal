@@ -25,13 +25,6 @@ get '/about', to: 'pages#about'
 get '/contact', to: 'pages#contact'
 
 #users  
-# resources :users do
-# 	#entries
-# 	resources :incomes
-# 	resources :expenses
-# 	resources :savings
-# 	get '/entries/fixed_items'
-# end
 resources :users do
 	  resources :incomes
 	  resources :expenses

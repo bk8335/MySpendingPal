@@ -17,6 +17,18 @@ class SavingsController < ApplicationController
   end
 
   def edit
+    @saving = Saving.find(params[:id])
+  end
+
+  def update
+    @saving = Saving.find(params[:id])
+    if @saving.update_attributes(saving_params)
+      flash[:success] = "Saving entry updated"
+      redirect_to root_url
+    else
+      flash[:error] = @saving.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy

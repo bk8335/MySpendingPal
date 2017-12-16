@@ -48,27 +48,15 @@ class User < ApplicationRecord
   end
 
   def recurring_incomes(user)
-    money_in = 0
-    user.incomes.all.each do |income|
-      money_in += income.amount
-    end
-    money_in
+    user.incomes.sum(:amount)
   end
 
   def recurring_expenses(user)
-    money_out = 0
-    user.expenses.all.each do |expense|
-      money_out += expense.amount
-    end
-    money_out
+    user.expenses.sum(:amount)
   end
 
   def recurring_savings(user)
-    savings_goal = 0
-    user.savings.all.each do |saving|
-      savings_goal += saving.amount
-    end
-    savings_goal
+    user.savings.sum(:amount)
   end
 
   def currency_symbol(user)

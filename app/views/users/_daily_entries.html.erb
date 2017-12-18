@@ -1,0 +1,27 @@
+<h2>Your Daily Entries</h2>
+<h3>Daily Expenses - <%= @currency %><%= @user.daily_spending_total(current_user) %></h3>
+<% if @daily_expenses.empty? %>
+	<p>You haven't added any daily expenses yet!</p>
+	<%= link_to "Add you first daily expense", new_user_daily_expense_path(current_user)%>
+<% else %>
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>Amount</th>
+			<th>Name</th>
+			<th>Category</th>
+		</tr>
+	<% @daily_expenses.each do |daily_expense| %>
+		<tr>
+			<td><%= daily_expense.date %></td>
+			<td><%= @currency %><%= daily_expense.amount %></td>
+			<td><%= daily_expense.name %></td>
+			<td><%= daily_expense.category %></td>
+			<td><%= link_to "Edit entry", edit_user_daily_expense_path(current_user, daily_expense) %></td>
+			<td><%= link_to "Delete", daily_expense, method: :delete,
+							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
+		</tr>
+	<% end %>
+	</table>
+	<%= link_to "Add additional daily expense", new_user_daily_expense_path(current_user)%>
+<% end %>

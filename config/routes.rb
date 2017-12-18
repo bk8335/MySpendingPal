@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
  
+  get 'daily_expenses/new'
+
+  get 'daily_expenses/show'
+
+  get 'daily_expenses/edit'
+
+  get 'daily_expenses/destroy'
+
   get 'savings/new'
 
   get 'savings/show'
@@ -29,13 +37,16 @@ resources :users do
 	  resources :incomes
 	  resources :expenses
 	  resources :savings
+    resources :daily_expenses
 end
 get '/signup',		to: 'users#new'
 post '/signup',		to: 'users#create'
+get 'users/monthly_summary'
   
 #entries
 resources :incomes
 resources :expenses
+resources :daily_expenses
 resources :savings
 get '/entries/fixed_items'
 

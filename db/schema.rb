@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207080506) do
+ActiveRecord::Schema.define(version: 20171217102141) do
+
+  create_table "daily_expenses", force: :cascade do |t|
+    t.string "name"
+    t.decimal "amount"
+    t.string "category"
+    t.date "date"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_daily_expenses_on_user_id"
+  end
 
   create_table "expenses", force: :cascade do |t|
     t.string "name"

@@ -1,8 +1,8 @@
 <h2>Your monthly entries</h2>
-<h3>Incomes - <%= @user.currency_symbol(@user) %><%= @user.recurring_incomes(@user) %></h3>
+<h3>Incomes - <%= @currency %><%= @user.recurring_incomes(current_user) %></h3>
 <% if @incomes.empty? %>
 	<p>You haven't added any incomes yet!</p>
-	<%= link_to "Add you first income entry", new_user_income_path(@user)%>
+	<%= link_to "Add you first income entry", new_user_income_path(current_user)%>
 <% else %>
 	<table>
 		<tr>
@@ -16,26 +16,26 @@
 	<% @incomes.each do |income| %>
 		<tr>
 			<td><%= income.name %></td>
-			<td><%= @user.currency_symbol(@user) %><%= income.amount %></td>
+			<td><%= @currency %><%= income.amount %></td>
 			<td><%= income.category %></td>
 			<td><%= income.date %></td>
 			<td><%= income.regular %></td>
-			<td><%= ((income.amount / @user.recurring_incomes(@user))*100).round(1) %>%</td>
+			<td><%= ((income.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 			<td><%= link_to "Edit entry", edit_user_income_path(current_user, income) %></td>
 			<td><%= link_to "Delete", income, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 		</tr>
 	<% end %>
 	</table>
-	<%= link_to "Add additional incomes", new_user_income_path(@user)%>
+	<%= link_to "Add additional incomes", new_user_income_path(current_user)%>
 <% end %>
 
-<h3>Expenses - <%= @user.currency_symbol(@user) %><%= @user.recurring_expenses(@user) %></h3>
-<p><%= ((@user.recurring_expenses(@user) / @user.recurring_incomes(@user)) * 100).round(1) %>% of total income</p>
+<h3>Expenses - <%= @currency %><%= @user.recurring_expenses(current_user) %></h3>
 <% if @expenses.empty? %>
 	<p>You haven't added any expenses yet!</p>
-	<%= link_to "Add you first expense entry", new_user_expense_path(@user)%>
+	<%= link_to "Add you first expense entry", new_user_expense_path(current_user)%>
 <% else %>
+<p><%= ((@user.recurring_expenses(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -48,25 +48,26 @@
 	<% @expenses.each do |expense| %>
 	<tr>
 		<td><%= expense.name %></td>
-		<td><%= @user.currency_symbol(@user) %><%= expense.amount %></td>
+		<td><%= @currency %><%= expense.amount %></td>
 		<td><%= expense.category %></td>
 		<td><%= expense.date %></td>
 		<td><%= expense.regular %></td>
-		<td><%= ((expense.amount / @user.recurring_incomes(@user))*100).round(1) %>%</td>
+		<td><%= ((expense.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 		<td><%= link_to "Edit entry", edit_user_expense_path(current_user, expense) %></td>
 		<td><%= link_to "Delete", expense, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 	</tr>
 	<% end %>
 	</table>
-	<%= link_to "Add additional expenses", new_user_expense_path(@user)%>
+	<%= link_to "Add additional expenses", new_user_expense_path(current_user)%>
 <% end %>
 
-<h3>Savings - <%= @user.currency_symbol(@user) %><%= @user.recurring_savings(@user) %></h3>
+<h3>Savings - <%= @currency %><%= @user.recurring_savings(current_user) %></h3>
 <% if @savings.empty? %>
 	<p>You haven't added any savings yet!</p>
-	<%= link_to "Add you first saving entry", new_user_saving_path(@user)%>
+	<%= link_to "Add you first saving entry", new_user_saving_path(current_user)%>
 <% else %>
+<p><%= ((@user.recurring_savings(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
 	<table>
 	<tr>
 		<th>Name</th>
@@ -77,14 +78,14 @@
 	<% @savings.each do |saving| %>
 	<tr>
 		<td><%= saving.name %></td>
-		<td><%= @user.currency_symbol(@user) %><%= saving.amount %></td>
+		<td><%= @currency %><%= saving.amount %></td>
 		<td><%= saving.regular %></td>
-		<td><%= ((saving.amount / @user.recurring_incomes(@user))*100).round(1) %>%</td>
+		<td><%= ((saving.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 		<td><%= link_to "Edit entry", edit_user_saving_path(current_user, saving) %></td>
 		<td><%= link_to "Delete", saving, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 	</tr>
 	<% end %>
 	</table>
-	<%= link_to "Add additional savings", new_user_saving_path(@user)%>
+	<%= link_to "Add additional savings", new_user_saving_path(current_user)%>
 <% end %>

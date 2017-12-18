@@ -12,6 +12,7 @@ class User < ApplicationRecord
 	has_many :incomes
 	has_many :expenses
 	has_many :savings
+  has_many :daily_expenses
 
 	# Returns a random token.
   def User.new_token
@@ -43,8 +44,11 @@ class User < ApplicationRecord
 
   def daily_budget(user)
     days_per_month = Time.days_in_month(Date.current.month)
-    disposable_income = recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
-    budget_per_day = (disposable_income / days_per_month).round(2)
+    budget_per_day = (disposable_income(user) / days_per_month).round(2)
+  end
+
+  def disposable_income(user)
+    recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
   end
 
   def recurring_incomes(user)
@@ -57,6 +61,10 @@ class User < ApplicationRecord
 
   def recurring_savings(user)
     user.savings.sum(:amount)
+  end
+
+  def daily_spending_total(user)
+    user.daily_expenses.sum(:amount)
   end
 
   def currency_symbol(user)

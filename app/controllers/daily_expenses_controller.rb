@@ -1,0 +1,50 @@
+class DailyExpensesController < ApplicationController
+  def new
+  	@daily_expense = DailyExpense.new
+  end
+
+  def create
+		@daily_expense = current_user.daily_expenses.build(daily_expense_params)
+  	if @daily_expense.save
+  		flash[:success] = "You just added a daily expense!"
+  		redirect_to root_url
+  	else
+  		flash[:danger] = "You suck at adding daily expenses"
+  	end
+  end
+
+  def show
+  end
+
+  def edit
+  	@daily_expense = DailyExpense.find(params[:id])
+  end
+
+  def update
+  	@daily_expense = DailyExpense.find(params[:id])
+  	if @daily_expense.update_attributes(daily_expense_params)
+      flash[:success] = "Daily expense updated"
+      redirect_to root_url
+    else
+      flash[:error] = @daily_expense.errors.full_messages
+      render 'edit'
+    end
+  end
+
+  def destroy
+  	@daily_expense = DailyExpense.find(params[:id])
+  	@daily_expense.destroy
+  	flash[:success] = "You deleted the daily expense entry"
+  end
+
+  private
+
+  def daily_expense_params
+  	params.require(:daily_expense).permit(
+  		:name,
+  		:amount,
+  		:category,
+  		:date
+  	)
+  end
+end

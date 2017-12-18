@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @incomes = @user.incomes.all
     @expenses = @user.expenses.all
     @savings = @user.savings.all
+    @daily_expenses = @user.daily_expenses.all
+    @currency = @user.currency_symbol(current_user)
   end
 
   def create

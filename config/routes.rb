@@ -38,6 +38,7 @@ resources :users do
 	  resources :expenses
 	  resources :savings
     resources :daily_expenses
+    get 'monthly_entries'
 end
 get '/signup',		to: 'users#new'
 post '/signup',		to: 'users#create'

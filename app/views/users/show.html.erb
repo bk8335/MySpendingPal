@@ -1,21 +1,19 @@
 <h2>Welcome <%= @user.name%>!</h2>
+<hr>
+<%= render 'spend_left_today' %>
+<hr>
+<%= render 'progress' %>
+<hr>
+<h2>Your daily budget is <%= @currency %><%= @user.daily_budget(current_user) %> </h2>
+<%= render 'daily_entries' %>
+<hr>
 
-<h3>Add regular income/outgoings here to calcuate your daily budget</h3>
+<h3>View your monthly income/outgoings <%= link_to 'here', user_monthly_entries_path(current_user) %> to calcuate your daily budget</h3>
 <ul>
 	<li><%= link_to "Income", new_user_income_path(current_user)%> - <%= @currency %><%= @user.recurring_incomes(current_user)%></li>
 	<li><%= link_to "Expenses", new_user_expense_path(current_user)%>- <%= @currency %><%= @user.recurring_expenses(current_user)%></li>
 	<li><%= link_to "Savings (target)", new_user_saving_path(current_user)%>- <%= @currency %><%= @user.recurring_savings(current_user)%></li>
 </ul>
-<hr>
-<h3>Your monthly spending budget is <%= @currency %><%= @user.disposable_income(current_user) %> - <%= ((@user.disposable_income(current_user) / @user.recurring_incomes(current_user))*100).round(1) %>% of total income</h3>
-<h2>Your daily budget is <%= @currency %><%= @user.daily_budget(current_user) %> </h2>
-
-<hr>
-<%= render 'daily_entries' %>
-<hr>
-<%= render 'monthly_entries' %>
-
-
 <hr>
 <p><%= link_to "Update account info", edit_user_path(current_user) %></p>
 <p><%= link_to "Log out", logout_path, method: :delete %></p>

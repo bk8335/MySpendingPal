@@ -8,10 +8,19 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @incomes = @user.incomes.all
-    @expenses = @user.expenses.all
+    @incomes = @user.incomes.all.order('date DESC')
+    @expenses = @user.expenses.all.order('date DESC')
     @savings = @user.savings.all
-    @daily_expenses = @user.daily_expenses.all
+    @daily_expenses = @user.daily_expenses.all.order('date DESC')
+    @currency = @user.currency_symbol(current_user)
+  end
+
+  def monthly_entries
+    @user = current_user
+    @incomes = @user.incomes.all.order('date DESC')
+    @expenses = @user.expenses.all.order('date DESC')
+    @savings = @user.savings.all
+    @daily_expenses = @user.daily_expenses.all.order('date DESC')
     @currency = @user.currency_symbol(current_user)
   end
 

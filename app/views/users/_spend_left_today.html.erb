@@ -1,0 +1,19 @@
+<h4>Spend left today</h4>
+<table>
+	<tr>
+		<td><%= @currency %><%= @user.daily_budget(current_user) %></td>
+		<td>-</td>
+		<td>XXX (Spend)</td>
+		<td>=</td>
+		<td>xxx(remaining)</td>
+		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%></td>
+		<td><button type="button" class="btn">Complete Day</button></td>
+	</tr>
+	<tr>
+		<td>Goal</td>
+		<td></td>
+		<td>Spend</td>
+		<td></td>
+		<td>Remaining</td>
+	</tr>
+</table>

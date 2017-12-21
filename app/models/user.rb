@@ -104,4 +104,29 @@ class User < ApplicationRecord
       "£"
     end
   end
+
+  def spend_today(user)
+    user.daily_expenses.where(date: DateTime.now.to_date).sum(:amount)
+  end
+
+  def spend_on_date(user, date)
+    user.daily_expenses.where(date: date).sum(:amount)
+  end
+
+  def remaining_today(user)
+    daily_budget(user) - spend_today(user)
+  end
+
+  def daily_spend_detail(user, date)
+    user.daily_expenses.where(date: date)
+  end
+
+  def each_day_of_month
+    date = DateTime.now.end_of_month.to_date
+    loop do
+      date
+      date -= 1.day
+      break if date.month == (DateTime.now.month - 1)
+    end
+  end
 end

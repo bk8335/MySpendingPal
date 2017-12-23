@@ -19,7 +19,7 @@
 			<td><%= income.name %></td>
 			<td><%= @currency %><%= income.amount %></td>
 			<td><%= income.category %></td>
-			<td><%= income.date %></td>
+			<td><%= income.date.strftime("%e %B") %></td>
 			<td><%= income.regular %></td>
 			<td><%= ((income.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 			<td><%= link_to "Edit entry", edit_user_income_path(current_user, income) %></td>
@@ -51,7 +51,7 @@
 		<td><%= expense.name %></td>
 		<td><%= @currency %><%= expense.amount %></td>
 		<td><%= expense.category %></td>
-		<td><%= expense.date %></td>
+		<td><%= expense.date.strftime("%e %B") %></td>
 		<td><%= expense.regular %></td>
 		<td><%= ((expense.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 		<td><%= link_to "Edit entry", edit_user_expense_path(current_user, expense) %></td>

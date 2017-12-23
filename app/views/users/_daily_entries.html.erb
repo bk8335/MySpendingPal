@@ -13,7 +13,7 @@
 		</tr>
 	<% @daily_expenses.each do |daily_expense| %>
 		<tr>
-			<td><%= daily_expense.date %></td>
+			<td><%= daily_expense.date.strftime("%e %B") %></td>
 			<td><%= @currency %><%= daily_expense.amount %></td>
 			<td><%= daily_expense.name %></td>
 			<td><%= daily_expense.category %></td>
@@ -25,7 +25,3 @@
 	</table>
 	<%= link_to "Add additional daily expense", new_user_daily_expense_path(current_user)%>
 <% end %>
-
-<p>Days in current month: <%= current_user.days_in_current_month %> </p>
-<p>Pseudocode: loop for days in month, from end of month - 1.day until date.month != Date.now.month </p>
-<p>If date of daily expense == date, show daily expense under the date</p>

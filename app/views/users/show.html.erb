@@ -6,7 +6,6 @@
 <%= render 'progress' %>
 <hr>
 <%= render 'daily_spend_by_date' %>
-<!-- <(%)=render 'daily_entries' %> -->
 <hr>
 
 <h3>View your monthly income/outgoings <%= link_to 'here', user_monthly_entries_path(current_user) %> to calcuate your daily budget</h3>
@@ -15,6 +14,3 @@
 	<li><%= link_to "Expenses", new_user_expense_path(current_user)%>- <%= @currency %><%= @user.recurring_expenses(current_user)%></li>
 	<li><%= link_to "Savings (target)", new_user_saving_path(current_user)%>- <%= @currency %><%= @user.recurring_savings(current_user)%></li>
 </ul>
-<hr>
-<p><%= link_to "Update account info", edit_user_path(current_user) %></p>
-<p><%= link_to "Log out", logout_path, method: :delete %></p>

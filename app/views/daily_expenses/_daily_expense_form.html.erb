@@ -10,7 +10,7 @@
 	<%= f.text_field :category, class: "form-control" %>
 
 	<%= f.label :date %>
-	<%= f.date_field :date, class: "form-control" %>
+	<%= f.date_field :date, class: "form-control", value: Date.today %>
 
 	<%= f.submit %>
 <% end %>

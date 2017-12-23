@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
 		@expense = current_user.expenses.build(expense_params)
   	if @expense.save
   		flash[:success] = "You just added an expense!"
-  		redirect_to root_url
+      redirect_to current_user
   	else
   		flash[:danger] = "You suck at adding an expense"
   	end
@@ -24,7 +24,7 @@ class ExpensesController < ApplicationController
      @expense = Expense.find(params[:id])
     if @expense.update_attributes(expense_params)
       flash[:success] = "Expense entry updated"
-      redirect_to root_url
+      redirect_to current_user
     else
       flash[:error] = @expense.errors.full_messages
       render 'edit'
@@ -35,7 +35,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     @expense.destroy
     flash[:success] = "You deleted the expense entry"
-    redirect_to root_url
+    redirect_back(fallback_location: current_user)
   end
 
   private

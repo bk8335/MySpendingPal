@@ -7,7 +7,7 @@ class SavingsController < ApplicationController
 		@saving = current_user.savings.build(saving_params)
   	if @saving.save
   		flash[:success] = "You just added a savings (goal)!"
-  		redirect_to root_url
+      redirect_to current_user
   	else
   		flash[:danger] = "You suck at adding savings"
   	end
@@ -24,7 +24,7 @@ class SavingsController < ApplicationController
     @saving = Saving.find(params[:id])
     if @saving.update_attributes(saving_params)
       flash[:success] = "Saving entry updated"
-      redirect_to root_url
+      redirect_to current_user
     else
       flash[:error] = @saving.errors.full_messages
       render 'edit'
@@ -35,7 +35,7 @@ class SavingsController < ApplicationController
     @saving = Saving.find(params[:id])
     @saving.destroy
     flash[:success] = "You deleted the saving entry"
-    redirect_to root_url
+    redirect_back(fallback_location: current_user)
   end
 
   private

@@ -7,7 +7,7 @@ class DailyExpensesController < ApplicationController
 		@daily_expense = current_user.daily_expenses.build(daily_expense_params)
   	if @daily_expense.save
   		flash[:success] = "You just added a daily expense!"
-  		redirect_to root_url
+  		redirect_to current_user
   	else
   		flash[:danger] = "You suck at adding daily expenses"
   	end
@@ -24,7 +24,7 @@ class DailyExpensesController < ApplicationController
   	@daily_expense = DailyExpense.find(params[:id])
   	if @daily_expense.update_attributes(daily_expense_params)
       flash[:success] = "Daily expense updated"
-      redirect_to root_url
+      redirect_to current_user
     else
       flash[:error] = @daily_expense.errors.full_messages
       render 'edit'

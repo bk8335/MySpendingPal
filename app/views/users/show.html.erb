@@ -2,7 +2,7 @@
 <hr>
 <%= render 'spend_left_today' %>
 <hr>
-<p>Your daily budget is <%= @currency %><%= @user.daily_budget(current_user) %> </p>
+<p>Your daily budget is <%= @currency %><%= @user.format_currency(@user.daily_budget(current_user)) %> </p>
 <%= render 'progress' %>
 <hr>
 <%= render 'daily_spend_by_date' %>
@@ -10,7 +10,7 @@
 
 <h3>View your monthly income/outgoings <%= link_to 'here', user_monthly_entries_path(current_user) %> to calcuate your daily budget</h3>
 <ul>
-	<li><%= link_to "Income", new_user_income_path(current_user)%> - <%= @currency %><%= @user.recurring_incomes(current_user)%></li>
-	<li><%= link_to "Expenses", new_user_expense_path(current_user)%>- <%= @currency %><%= @user.recurring_expenses(current_user)%></li>
-	<li><%= link_to "Savings (target)", new_user_saving_path(current_user)%>- <%= @currency %><%= @user.recurring_savings(current_user)%></li>
+	<li><%= link_to "Income", new_user_income_path(current_user)%> - <%= @currency %><%= @user.format_currency(@user.recurring_incomes(current_user))%></li>
+	<li><%= link_to "Expenses", new_user_expense_path(current_user)%>- <%= @currency %><%= @user.format_currency(@user.recurring_expenses(current_user))%></li>
+	<li><%= link_to "Savings (target)", new_user_saving_path(current_user)%>- <%= @currency %><%= @user.format_currency(@user.recurring_savings(current_user))%></li>
 </ul>

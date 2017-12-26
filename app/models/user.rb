@@ -129,4 +129,6 @@ class User < ApplicationRecord
       break if date.month == (DateTime.now.month - 1)
     end
   end
+
+  
 end

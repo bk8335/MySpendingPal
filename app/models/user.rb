@@ -42,11 +42,6 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def daily_budget(user)
-    days_per_month = Time.days_in_month(Date.current.month)
-    budget_per_day = (disposable_income(user) / days_per_month).round(2)
-  end
-
   def disposable_income(user)
     recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
   end
@@ -65,6 +60,16 @@ class User < ApplicationRecord
 
   def daily_spending_total(user)
     user.daily_expenses.sum(:amount)
+  end
+
+  def daily_spending_total_yesterday(user)
+    total_yesterday = 0
+    user.daily_expenses.each do |expense|
+      if expense.date < Date.today
+        total_yesterday += expense.amount
+      end
+    end
+    total_yesterday
   end
 
   def days_in_current_month
@@ -114,7 +119,7 @@ class User < ApplicationRecord
   end
 
   def remaining_today(user)
-    daily_budget(user) - spend_today(user)
+    dynamic_daily_budget(user) - spend_today(user)
   end
 
   def daily_spend_detail(user, date)
@@ -130,5 +135,34 @@ class User < ApplicationRecord
     end
   end
 
-  
+  def daily_budget(user)
+    days_per_month = Time.days_in_month(Date.current.month)
+    budget_per_day = (disposable_income(user) / days_per_month)
+  end
+
+  def dynamic_daily_budget(user)
+    days_per_month = Time.days_in_month(Date.current.month)
+    days_complete = Date.current.day - 1
+    days_left = days_per_month - days_complete
+
+    spend_left = disposable_income(user) - daily_spending_total_yesterday(user)
+
+    dynamic_daily_budget = (spend_left / days_left)
+  end
+
+  def complete_day_forecast(user)
+    budget_remaining = disposable_income(user) - daily_spending_total(user)
+    days_per_month = Time.days_in_month(Date.current.month)
+    days_complete = Date.current.day
+    days_left = days_per_month - days_complete
+    forecast = budget_remaining - (spend_today(user) * days_left)
+  end
+
+  def forecast_result(user)
+    if complete_day_forecast(user) >= 0
+      "Great job, you're ahead of target!"
+    else
+      "Be careful, at this rate, you're going to be out of money before the end of the month"
+    end
+  end
 end

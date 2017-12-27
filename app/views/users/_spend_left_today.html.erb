@@ -1,13 +1,13 @@
 <h4>Spend left today</h4>
 <table>
 	<tr>
-		<td><%= @currency %><%= @user.format_currency(@user.daily_budget(current_user)) %></td>
+		<td><%= @currency %><%= @user.format_currency(@user.dynamic_daily_budget(current_user)) %></td>
 		<td>-</td>
 		<td><%= @currency %><%= @user.format_currency(@user.spend_today(current_user)) %></td>
 		<td>=</td>
 		<td><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
 		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%></td>
-		<td><button type="button" class="btn">Complete Day</button></td>
+		<td><button type= class="btn" id="complete-spend-today">Complete Spend for Today</button></td>
 	</tr>
 	<tr>
 		<td>Goal</td>
@@ -17,3 +17,23 @@
 		<td>Remaining</td>
 	</tr>
 </table>
+
+<div id="forecast-spend" style="display: none">
+<h2 >At this rate you will have <%= @currency %><%= @user.format_currency(@user.complete_day_forecast(current_user)) %> at the end of the month. <%= @user.forecast_result(current_user) %> </h2>
+</div>
+ 
+<script>
+$( "button" ).click(function() {
+  $( "#forecast-spend" ).show( "slow" );
+});
+</script>
+
+
+<script type="text/javascript">
+$(function() {
+  $('a#complete-spend-today').click(function(event){
+    event.preventDefault();
+    $('div#forecast-spend').toggle();
+  });
+});   
+</script>

@@ -1,6 +1,8 @@
 <nav>
-	<ul>
-		<li><%= link_to "Home", root_path %></li>
+	<ul class = "nav">
+		<li><%= link_to image_tag('msp_logo2.png', alt: "Home", class: "logo-header"), root_path %></li>
+	</ul>
+	<ul class = "nav navbar-nav navbar-right">
 		<% if logged_in? %>
 			<li><%= link_to "My Account", current_user %></li>
 			<li><%= link_to "Update account info", edit_user_path(current_user) %></li>

@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
   	@income = current_user.incomes.build(income_params)
   	if @income.save
   		flash[:success] = "You just added an income!"
-  		redirect_to current_user
+  		redirect_to user_monthly_entries_path(current_user)
   	else
   		flash[:danger] = "You suck at adding an income"
   	end
@@ -24,7 +24,7 @@ class IncomesController < ApplicationController
      @income = Income.find(params[:id])
     if @income.update_attributes(income_params)
       flash[:success] = "Income entry updated"
-      redirect_to current_user
+      redirect_to user_monthly_entries_path(current_user)
     else
       flash[:error] = @income.errors.full_messages
       render 'edit'

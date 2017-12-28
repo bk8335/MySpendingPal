@@ -10,10 +10,10 @@
 	<%= f.text_field :category, class: "form-control" %>
 
 	<%= f.label :date %>
-	<%= f.date_field :date, class: "form-control" %>
+	<%= f.date_field :date, class: "form-control", value: Date.today %>
 
 	<%= f.label "Regular?" %>
-	<%= f.check_box :regular, class: "form-control" %>
+	<%= f.check_box :regular, class: "form-control", checked: "checked" %>
 
 	<%= f.submit %>
 <% end %>

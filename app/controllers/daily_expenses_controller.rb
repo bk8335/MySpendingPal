@@ -35,6 +35,7 @@ class DailyExpensesController < ApplicationController
   	@daily_expense = DailyExpense.find(params[:id])
   	@daily_expense.destroy
   	flash[:success] = "You deleted the daily expense entry"
+    redirect_back(fallback_location: current_user)
   end
 
   private

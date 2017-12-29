@@ -1,6 +1,7 @@
 class DailyExpensesController < ApplicationController
   def new
   	@daily_expense = DailyExpense.new
+    @daily_expense.date = Date.today
   end
 
   def create

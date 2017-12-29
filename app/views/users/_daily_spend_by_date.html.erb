@@ -4,7 +4,13 @@
   <p><%= date.strftime("%e %B") %> - <%= @currency %><%= @user.format_currency(@user.spend_on_date(current_user, date))%> </p>
   <% items_in_day = @user.daily_spend_detail(current_user, date) %>
   <ul><% items_in_day.each do |item| %>
-  	<li><%= @currency %><%= @user.format_currency(item.amount) %>, <%= item.name %>, <%= item.category %>      <%= link_to "Delete", item, method: :delete %></li>
+  	<li>
+  		<%= @currency %><%= @user.format_currency(item.amount) %>,
+  		<%= item.name %>,
+  		<%= item.category %>,
+  		<%= link_to "Edit entry", edit_user_daily_expense_path(current_user, item) %>, 
+  		<%= link_to "Delete", item, method: :delete %>
+  	</li>
   <% end %></ul>
   <% date -= 1.day %>
   <% break if date.month == (DateTime.now.month - 1) %>

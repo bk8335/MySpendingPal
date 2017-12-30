@@ -1,7 +1,11 @@
 class DailyExpensesController < ApplicationController
   def new
   	@daily_expense = DailyExpense.new
-    @daily_expense.date = Date.today
+    if params[:format].blank?
+      @daily_expense.date = date.today
+    else
+      @daily_expense.date = params[:format].to_date
+    end
   end
 
   def create

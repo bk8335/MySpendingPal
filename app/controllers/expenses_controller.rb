@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-		@expense = current_user.expenses.build(expense_params)
+    @expense = current_user.expenses.build(expense_params)
   	if @expense.save
   		flash[:success] = "You just added an expense!"
       redirect_to user_monthly_entries_path(current_user)
@@ -46,7 +46,7 @@ class ExpensesController < ApplicationController
   		:amount,
   		:category,
   		:date,
-  		:regular,
+  		:regular
   	)
   end
 end

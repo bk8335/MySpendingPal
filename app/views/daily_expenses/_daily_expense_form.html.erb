@@ -7,7 +7,20 @@
 	<%= f.number_field :amount, step: 0.01, min: 0, class: "form-control" %>
 
 	<%= f.label :category %>
-	<%= f.select :category, class: "form-control" %>
+	<br>
+	<%= f.select :category, ["Please select", 
+													 "Bills",
+													 "Dining/drinking",
+													 "Enjoyment",
+													 "Family",
+													 "Groceries",
+													 "Home",
+													 "Transport",
+													 "Other"],
+													 disabled: "Please select",
+													 selected: "Please select",
+													 class: "form-control" %>
+	<br>
 
 	<%= f.label :date %>
 	<%= f.date_field :date, class: "form-control" %>

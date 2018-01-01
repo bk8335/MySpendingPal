@@ -44,7 +44,6 @@ class IncomesController < ApplicationController
   	params.require(:income).permit(
   		:name,
   		:amount,
-  		:category,
   		:date,
   		:regular,
   	)

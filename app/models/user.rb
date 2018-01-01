@@ -81,7 +81,11 @@ class User < ApplicationRecord
   end
 
   def spend_progress_percentage(user)
-    (( daily_spending_total(user) / disposable_income(user).to_d ) * 100).round(1)
+    if disposable_income(user) == 0
+      return 0
+    else
+      (( daily_spending_total(user) / disposable_income(user).to_d ) * 100).round(1)
+    end
   end
 
   def spend_time_ratio(user)
@@ -91,7 +95,7 @@ class User < ApplicationRecord
   def spend_ratio_feedback(user)
     if spend_time_ratio(user) < 1
       "Great job - you're ahead of target!"
-    elsif spend_time_ratio < 1.1 
+    elsif spend_time_ratio(user) < 1.1 
       "Keep going, you're not too far off target"
     else
       "Uh oh!"

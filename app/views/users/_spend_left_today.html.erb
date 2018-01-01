@@ -7,7 +7,7 @@
 		<td>=</td>
 		<td><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
 		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%></td>
-		<td><button type= class="btn" id="complete-spend-today">Complete Spend for Today</button></td>
+		<td><button class="btn btn-primary" id="complete-spend-today">Complete Spend for Today</button></td>
 	</tr>
 	<tr>
 		<td>Goal</td>

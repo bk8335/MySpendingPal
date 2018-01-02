@@ -58,6 +58,14 @@ class User < ApplicationRecord
     user.savings.sum(:amount)
   end
 
+  def budget_share_of_income(user)
+    if disposable_income(user) == 0
+      return 0
+    else
+      ((disposable_income(user) / recurring_incomes(user))*100).round(1)
+    end
+  end
+
   def daily_spending_total(user)
     user.daily_expenses.sum(:amount)
   end
@@ -103,11 +111,11 @@ class User < ApplicationRecord
   end
 
   def currency_symbol(user)
-    if user.primary_currency == "GBP"
+    if user.primary_currency == ( "£" )
       "£"
-    elsif user.primary_currency == "EUR"
+    elsif user.primary_currency == ( "€" )
       "€"
-    elsif user.primary_currency == "USD"
+    elsif user.primary_currency == ( $" )
       "$"
     else
       "£"

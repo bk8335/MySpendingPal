@@ -31,6 +31,7 @@ root 'pages#home'
 get 'pages/home'
 get '/about', to: 'pages#about'
 get '/contact', to: 'pages#contact'
+get '/getting-started', to: 'pages#getting_started'
 
 #users  
 resources :users do

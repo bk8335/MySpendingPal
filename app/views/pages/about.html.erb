@@ -4,7 +4,7 @@
 <%= image_tag('paycheck-meme.jpg', alt: "Pacycheck Meme", class: 'center-image') %>
 
 <p>Its kind of a joke that we all manage our finances so badly we can barely make it to the end of the month with a positive balance.</p>
-<p>Except its not a very funny joke - <%= link_to "46% of American's can't afford a $400 bill", 'https://www.washingtonpost.com/news/wonk/wp/2016/05/25/the-shocking-number-of-americans-who-cant-cover-a-400-expense/?utm_term=.5fc215ee8ef8' %>.</p>
+<p>Except its not a very funny joke - <%= link_to "46% of American's can't afford a $400 bill", 'https://www.washingtonpost.com/news/wonk/wp/2016/05/25/the-shocking-number-of-americans-who-cant-cover-a-400-expense/?utm_term=.5fc215ee8ef8', target: '_blank' %>.</p>
 
 <br>
 
@@ -14,10 +14,4 @@
 
 <br>
 
-<p>How to use MySpendingPal:</p>
-<ol>
-	<li><%= link_to 'Sign up', signup_path(@user)%></li>
-	<li>Put in your monthly incomings and outgoings (e.g. income, rent, bills, saving goals for any leftover money)</li>
-	<li>Put in your daily spending, and see your evolving daily budget to hit your targets</li>
-	<li>Reach payday without going broke first!</li>
-</ol>
+<%= render 'getting_started' %>

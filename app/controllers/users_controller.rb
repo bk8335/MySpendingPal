@@ -28,10 +28,8 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   		log_in @user
-      flash[:success] = "Thanks for signing up! You can now log in with your submitted details"
-
-      # want to then redirect to the fixed entries page
-      redirect_to user_url(@user)
+      flash[:success] = "Thanks for signing up! Enter your monthly entries here to calculate your daily budget"
+      redirect_to user_monthly_entries_path(@user)
   	else
   		flash[:error] = @user.errors.full_messages
   		render 'new'

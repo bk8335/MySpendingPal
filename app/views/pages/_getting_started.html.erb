@@ -2,12 +2,18 @@
 <ol>
 	<% if logged_in? %>
 		<li>Put in your <%= link_to 'monthly incomings and outgoings', user_monthly_entries_path(current_user) %> (e.g. income, rent, bills, saving goals for any leftover money)</li>
+		<%= image_tag('getting_started_1.png', alt: "monthly entries", class: "getting-started") %>
 		<li>Put in your <%= link_to 'daily spending', current_user %>, and see your evolving daily budget to hit your targets</li>
+		<%= image_tag('getting_started_2.png', alt: "daily entries", class: "getting-started") %>
 		<li>Reach payday without running out of money!</li>
+		<%= image_tag('getting_started_3.png', alt: "forecast budget", class: "getting-started") %>
 	<% else %>
 		<li><%= link_to 'Sign up', signup_path(@user)%></li>
 		<li>Put in your monthly incomings and outgoings (e.g. income, rent, bills, saving goals for any leftover money)</li>
+		<%= image_tag('getting_started_1.png', alt: "monthly entries", class: "getting-started") %>
 		<li>Put in your daily spending, and see your evolving daily budget to hit your targets</li>
+		<%= image_tag('getting_started_2.png', alt: "daily entries", class: "getting-started") %>
 		<li>Reach payday without running out of money!</li>
+		<%= image_tag('getting_started_3.png', alt: "forecast budget", class: "getting-started") %>
 	<% end %>
 </ol>

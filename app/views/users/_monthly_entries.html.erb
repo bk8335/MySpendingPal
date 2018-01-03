@@ -3,7 +3,7 @@
 <h3>Incomes - <%= @currency %><%= @user.format_currency(@user.recurring_incomes(current_user)) %></h3>
 <% if @incomes.empty? %>
 	<p>You haven't added any incomes yet!</p>
-	<%= link_to "Add you first income entry", new_user_income_path(current_user)%>
+	<%= link_to "Add your first income entry", new_user_income_path(current_user)%>
 <% else %>
 	<table>
 		<tr>
@@ -40,7 +40,7 @@
 <h3>Expenses - <%= @currency %><%= @user.format_currency(@user.recurring_expenses(current_user)) %></h3>
 <% if @expenses.empty? %>
 	<p>You haven't added any expenses yet!</p>
-	<%= link_to "Add you first expense entry", new_user_expense_path(current_user)%>
+	<%= link_to "Add your first expense entry", new_user_expense_path(current_user)%>
 <% else %>
 <p><%= ((@user.recurring_expenses(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
 	<table>
@@ -78,7 +78,7 @@
 <h3>Savings - <%= @currency %><%= @user.recurring_savings(current_user) %></h3>
 <% if @savings.empty? %>
 	<p>You haven't added any savings yet!</p>
-	<%= link_to "Add you first saving entry", new_user_saving_path(current_user)%>
+	<%= link_to "Add your first saving entry", new_user_saving_path(current_user)%>
 <% else %>
 <p><%= ((@user.recurring_savings(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
 	<table>

@@ -7,7 +7,7 @@
 		<td>=</td>
 		<td><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
 		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%></td>
-		<td><button class="btn btn-primary" id="complete-spend-today">Complete Spend for Today</button></td>
+		<td><button class="btn btn-primary" id="complete-spend-today">Forecast End Balance*</button></td>
 	</tr>
 	<tr>
 		<td>Goal</td>
@@ -19,7 +19,8 @@
 </table>
 
 <div id="forecast-spend" style="display: none">
-<h2 >At this rate you will have <%= @currency %><%= @user.format_currency(@user.complete_day_forecast(current_user)) %> at the end of the month. <%= @user.forecast_result(current_user) %> </h2>
+<h2 >At this rate you will have <%= @currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month. <%= @user.forecast_result(current_user) %> </h2>
+<p><small>*This is your average daily spending to date for the whole month, less any future daily items you've already committed to</small></p>
 </div>
  
 <script>

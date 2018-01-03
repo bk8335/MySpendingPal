@@ -70,14 +70,24 @@ class User < ApplicationRecord
     user.daily_expenses.sum(:amount)
   end
 
-  def daily_spending_total_yesterday(user)
-    total_yesterday = 0
+  def daily_spending_total_to_now(user)
+    total_to_now = 0
     user.daily_expenses.each do |expense|
-      if expense.date < Date.today
-        total_yesterday += expense.amount
+      if expense.date <= Date.today
+        total_to_now += expense.amount
       end
     end
-    total_yesterday
+    total_to_now
+  end
+
+  def future_daily_spending(user)
+    future_total = 0
+    user.daily_expenses.each do |expense|
+      if (expense.date > Date.today) && (expense.date <= Date.end_of_month)
+        future_total += expense.amount
+      end
+    end
+    future_total
   end
 
   def days_in_current_month
@@ -171,11 +181,23 @@ class User < ApplicationRecord
   end
 
   def forecast_result(user)
-    if complete_day_forecast(user) >= 0
+    if forecast_end_balance(user) >= 0
       "Great job, you're ahead of target!"
     else
       "Be careful, at this rate, you're going to be out of money before the end of the month"
     end
+  end
+
+  def forecast_end_balance(user)
+    average_spend_to_date(user) - future_daily_spending(user)
+  end
+
+  def average_spend_to_date(user)
+    days_complete = Date.current.day
+    daily_spending_total_to_now(user)
+    days_per_month = Time.days_in_month(Date.current.month)
+
+    disposable_income(user) - ((daily_spending_total_to_now(user) / days_complete) * days_per_month)
   end
 
   def budget_left(user)

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @expenses = @user.expenses.all.order('date DESC')
     @savings = @user.savings.all
     @daily_expenses = @user.daily_expenses.all.order('date DESC')
-    @currency = @user.currency_symbol(current_user)
+    @currency = @user.primary_currency
   end
 
   def monthly_entries
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @expenses = @user.expenses.all.order('date DESC')
     @savings = @user.savings.all
     @daily_expenses = @user.daily_expenses.all.order('date DESC')
-    @currency = @user.currency_symbol(current_user)
+    @currency = @user.primary_currency
   end
 
   def create

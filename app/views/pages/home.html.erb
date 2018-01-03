@@ -3,7 +3,12 @@
 <h3>Count your cash as closely as your calories!</h3>
 
 <p>Keep having less money than you want at the end of the month?</p>
-<p>We'll help you set a daily budget, and make sure you won't be overbudget before payday</p>
+
+<% if logged_in? && new_user? %>
+<%= render 'getting_started' %>
+<hr>
+<% end %>
+<p>We'll help you set a daily budget, and make sure you won't go over it before payday</p>
 
 <ul>
 	<li>Automatically have your daily budget calculated for you</li>

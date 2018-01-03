@@ -157,7 +157,7 @@ class User < ApplicationRecord
     days_complete = Date.current.day - 1
     days_left = days_per_month - days_complete
 
-    spend_left = disposable_income(user) - daily_spending_total_yesterday(user)
+    spend_left = disposable_income(user) - daily_spending_total(user)
 
     dynamic_daily_budget = (spend_left / days_left)
   end
@@ -176,5 +176,9 @@ class User < ApplicationRecord
     else
       "Be careful, at this rate, you're going to be out of money before the end of the month"
     end
+  end
+
+  def budget_left(user)
+    disposable_income(user) - daily_spending_total(user)
   end
 end

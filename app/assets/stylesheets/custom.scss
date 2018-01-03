@@ -94,7 +94,9 @@ button:hover {
 table {
     font-family: 'Work Sans', sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 td, th {

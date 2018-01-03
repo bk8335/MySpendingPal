@@ -83,7 +83,7 @@ class User < ApplicationRecord
   def future_daily_spending(user)
     future_total = 0
     user.daily_expenses.each do |expense|
-      if (expense.date > Date.today) && (expense.date <= Date.end_of_month)
+      if (expense.date > Date.today) && (expense.date <= Date.today.end_of_month)
         future_total += expense.amount
       end
     end

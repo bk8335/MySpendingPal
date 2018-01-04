@@ -3,7 +3,8 @@
 	<%= f.label :name %>
 	<%= f.text_field :name, class: "form-control" %>
 
-	<%= f.label :amount %>
+	<%= f.label :amount, value: "Net Amount" %> (<%= @user.primary_currency%>)
+	<small>- The take home pay after taxes etc.</small>
 	<%= f.number_field :amount, step: 0.01, min: 0, class: "form-control" %>
 
 	<%= f.label :date %>

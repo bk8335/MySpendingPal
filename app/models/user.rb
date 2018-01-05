@@ -184,8 +184,7 @@ class User < ApplicationRecord
     if forecast_end_balance(user) >= 0
       "Great job, you're ahead of target!"
     else
-      "Be careful, at this rate, you're going to be out of money by the #{forecast_broke_date(user)}"
-      # "Be careful, at this rate, you're going to be out of money before the end of the month"
+      "At this rate, you're going to be out of money by the #{forecast_broke_date(user)}"
     end
   end
 
@@ -199,9 +198,8 @@ class User < ApplicationRecord
     while balance > 0
       balance -= average_spend_to_date(user) 
       date += 1.day
-      return date.strftime("%e %B")
     end
-
+    return date.strftime("%e %B")
   end
 
   def average_spend_to_date(user)

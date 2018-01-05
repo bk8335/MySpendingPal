@@ -21,14 +21,16 @@
 
 .green-day{
   list-style-position: inside;
-  border: 1px solid green;
+  border: 2px solid green;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .red-day{
   list-style-position: inside;
-  border: 1px solid red;
+  border: 2px solid red;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .future-day {
@@ -141,5 +143,9 @@ tr:nth-child(even) {
 
 li {
   margin-bottom: 5px;
+}
+
+ul {
+  width: 60%;
 }
 

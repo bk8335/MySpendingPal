@@ -194,9 +194,9 @@ class User < ApplicationRecord
 
   def forecast_broke_date(user)
     balance = budget_left(user)
-    date = Date.current
+    date = Date.current + 1.day
     while balance > 0
-      balance -= average_spend_to_date(user) 
+      balance -= (average_spend_to_date(user) + spend_on_date(user, date))
       date += 1.day
     end
     return date.strftime("%e %B")

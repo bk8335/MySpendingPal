@@ -184,23 +184,48 @@ class User < ApplicationRecord
     if forecast_end_balance(user) >= 0
       "Great job, you're ahead of target!"
     else
-      "Be careful, at this rate, you're going to be out of money before the end of the month"
+      "Be careful, at this rate, you're going to be out of money by the #{forecast_broke_date(user)}"
+      # "Be careful, at this rate, you're going to be out of money before the end of the month"
     end
   end
 
   def forecast_end_balance(user)
-    average_spend_to_date(user) - future_daily_spending(user)
+    average_spend_forecast(user) - future_daily_spending(user)
+  end
+
+  def forecast_broke_date(user)
+    balance = budget_left(user)
+    date = Date.current
+    while balance > 0
+      balance -= average_spend_to_date(user) 
+      date += 1.day
+      return date.strftime("%e %B")
+    end
+
   end
 
   def average_spend_to_date(user)
     days_complete = Date.current.day
     daily_spending_total_to_now(user)
-    days_per_month = Time.days_in_month(Date.current.month)
+    average_spend = (daily_spending_total_to_now(user) / days_complete)
+  end
 
-    disposable_income(user) - ((daily_spending_total_to_now(user) / days_complete) * days_per_month)
+  def average_spend_forecast(user)
+    disposable_income(user) - (average_spend_to_date(user) * Time.days_in_month(Date.current.month))
   end
 
   def budget_left(user)
     disposable_income(user) - daily_spending_total(user)
+  end
+
+  def green_or_red(user, date)
+    if
+      date > Date.current && (spend_on_date(user, date) == 0)
+      "future-day"
+    elsif dynamic_daily_budget(user) > spend_on_date(user, date)
+      "green-day"
+    else
+      "red-day"
+    end
   end
 end

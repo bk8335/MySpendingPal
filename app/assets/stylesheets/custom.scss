@@ -19,6 +19,23 @@
   margin-bottom: 20px;
 }
 
+.green-day{
+  list-style-position: inside;
+  border: 1px solid green;
+  margin-bottom: 10px;
+}
+
+.red-day{
+  list-style-position: inside;
+  border: 1px solid red;
+  margin-bottom: 10px;
+}
+
+.future-day {
+  list-style-position: inside;
+  margin-bottom: 10px;
+}
+
 body {
 
   background: #f2fcfe;  /* fallback for old browsers */
@@ -119,7 +136,7 @@ tr:nth-child(even) {
 /* lists */
 .daily-spend-by-date {
   margin-bottom: 5px;
-  margin-top: 25px;
+  margin-top: 5px;
 }
 
 li {

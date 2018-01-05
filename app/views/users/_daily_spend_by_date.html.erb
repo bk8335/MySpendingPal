@@ -2,6 +2,7 @@
 <% date = DateTime.now.end_of_month.to_date %>
 <ul>
 <% loop do %>
+<div class=<%= @user.green_or_red(current_user, date) %>>
   <li class="daily-spend-by-date"><%= date.strftime("%e %B") %> - <%= @currency %><%= @user.format_currency(@user.spend_on_date(current_user, date))%> <%=link_to "Add entry", new_user_daily_expense_path(current_user, date), class: "btn btn-default"%></li>
   <% items_in_day = @user.daily_spend_detail(current_user, date) %>
   <ul><% items_in_day.each do |item| %>
@@ -12,8 +13,10 @@
       <td><%= link_to "Edit entry", edit_user_daily_expense_path(current_user, item) %></td>
       <td><%= link_to "Delete", item, method: :delete %></td>
     </li>
-  <% end %></ul>
+  <% end %>
+</ul>
   <% date -= 1.day %>
   <% break if (date.month == (DateTime.now.month - 1)) || (date.month == 12 && (DateTime.now.month == 1)) %>
+</div>
 <% end %>
 </ul>

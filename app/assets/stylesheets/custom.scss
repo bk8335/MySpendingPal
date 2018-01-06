@@ -55,7 +55,7 @@ body {
 .center-image {
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 }
 
 .center-text {
@@ -84,6 +84,7 @@ input, textarea, select, .uneditable-input {
   width: 300px;
   margin-bottom: 15px;
   @include box_sizing;
+  max-width: 100%;
 }
 
 .form-control {
@@ -147,5 +148,18 @@ li {
 
 ul {
   width: 60%;
+}
+
+/* images */
+img {
+  max-width: 100%;
+}
+
+
+@media screen and (max-width: 500px) {
+/* applies only if the screen is narrower than 500px */
+  td, th {
+    padding: 2px;
+  }
 }
 

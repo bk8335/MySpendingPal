@@ -1,6 +1,7 @@
 class DailyExpensesController < ApplicationController
   def new
   	@daily_expense = DailyExpense.new
+    @user = current_user
     if params[:format].blank?
       @daily_expense.date = Date.today
     else
@@ -23,10 +24,12 @@ class DailyExpensesController < ApplicationController
 
   def edit
   	@daily_expense = DailyExpense.find(params[:id])
+    @user = current_user
   end
 
   def update
   	@daily_expense = DailyExpense.find(params[:id])
+    @user = current_user
   	if @daily_expense.update_attributes(daily_expense_params)
       flash[:success] = "Daily expense updated"
       redirect_to current_user

@@ -3,7 +3,7 @@
 	<%= f.label :name %>
 	<%= f.text_field :name, class: "form-control" %>
 
-	<%= f.label :amount %>
+	<%= f.label :amount %> (<%= @user.primary_currency%>)
 	<%= f.number_field :amount, step: 0.01, min: 0, class: "form-control" %>
 
 	<%= f.label :category %>
@@ -17,8 +17,8 @@
 													 "Home",
 													 "Transport",
 													 "Other"],
-													 disabled: "Please select",
-													 selected: "Please select",
+													 disabled: 'Please select',
+													 prompt: 'Please select',
 													 class: "form-control" %>
 	<br>												 
 

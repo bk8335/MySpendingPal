@@ -1,6 +1,7 @@
 class SavingsController < ApplicationController
   def new
   	@saving = Saving.new
+    @user = current_user
   end
 
    def create
@@ -18,10 +19,12 @@ class SavingsController < ApplicationController
 
   def edit
     @saving = Saving.find(params[:id])
+    @user = current_user
   end
 
   def update
     @saving = Saving.find(params[:id])
+    @user = current_user
     if @saving.update_attributes(saving_params)
       flash[:success] = "Saving entry updated"
       redirect_to user_monthly_entries_path(current_user)

@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   def new
   	@expense = Expense.new
     @expense.date = Date.today
+    @user = current_user
   end
 
   def create
@@ -19,10 +20,12 @@ class ExpensesController < ApplicationController
 
   def edit
     @expense = Expense.find(params[:id])
+    @user = current_user
   end
 
   def update
      @expense = Expense.find(params[:id])
+     @user = current_user
     if @expense.update_attributes(expense_params)
       flash[:success] = "Expense entry updated"
       redirect_to user_monthly_entries_path(current_user)

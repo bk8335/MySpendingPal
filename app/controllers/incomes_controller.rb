@@ -20,10 +20,12 @@ class IncomesController < ApplicationController
 
   def edit
     @income = Income.find(params[:id])
+    @user = current_user
   end
 
   def update
      @income = Income.find(params[:id])
+     @user = current_user
     if @income.update_attributes(income_params)
       flash[:success] = "Income entry updated"
       redirect_to user_monthly_entries_path(current_user)

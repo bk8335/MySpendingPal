@@ -9,7 +9,6 @@
 		<tr>
 			<th>Name</th>
 			<th>Amount</th>
-			<th>Category</th>
 			<th>Date</th>
 			<th>Regular?</th>
 			<th>Share of Total Income</th>
@@ -18,7 +17,6 @@
 		<tr>
 			<td><%= income.name %></td>
 			<td><%= @currency %><%= @user.format_currency(income.amount) %></td>
-			<td><%= income.category %></td>
 			<td><%= income.date.strftime("%e %B") %></td>
 			<td>
 				<% if income.regular %>

@@ -24,7 +24,8 @@
 	<%= f.label :date %>
 	<%= f.date_field :date, class: "form-control" %>
 
-	<%= f.label "Repeats next month?" %>
+	<%= f.label "Regular" %>
+	<br><small>*set as standard for all months</small>
 	<%= f.check_box :regular, class: "checkbox inline", checked: "checked" %>
 
 	<%= f.submit %>

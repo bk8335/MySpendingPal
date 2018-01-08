@@ -125,7 +125,7 @@ class User < ApplicationRecord
       "£"
     elsif user.primary_currency == ( "€" )
       "€"
-    elsif user.primary_currency == ( $" )
+    elsif user.primary_currency == ( "$" )
       "$"
     else
       "£"
@@ -182,9 +182,10 @@ class User < ApplicationRecord
 
   def forecast_result(user)
     if forecast_end_balance(user) >= 0
-      "Great job, you're ahead of target!"
+      "Great job, you're ahead of target by #{days_ahead_or_behind(user)} days!
+      Your current rate of spending will last you until #{forecast_broke_date(user).strftime("%e %B")}."
     else
-      "At this rate, you're going to be out of money by the #{forecast_broke_date(user)}"
+      "At this rate, you're going to be out of money by the #{forecast_broke_date(user).strftime("%e %B")}."
     end
   end
 
@@ -199,7 +200,11 @@ class User < ApplicationRecord
       balance -= (average_spend_to_date(user) + spend_on_date(user, date))
       date += 1.day
     end
-    return date.strftime("%e %B")
+    return date
+  end
+
+  def days_ahead_or_behind(user)
+    (forecast_broke_date(user) - Date.today.end_of_month).to_i
   end
 
   def average_spend_to_date(user)

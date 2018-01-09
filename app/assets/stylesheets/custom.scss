@@ -22,7 +22,6 @@
 }
 
 .homepage-screenshot {
-  box-shadow: 8px 8px 10px #aaa;
   margin: 10px;
   display: block;
   margin-left: auto;
@@ -149,8 +148,12 @@ td, th {
     padding: 8px;
 }
 
+tr:nth-child(odd) {
+    background-color: #abd6f4;
+}
+
 tr:nth-child(even) {
-    background-color: #f2fcfe;
+    background-color: #d8ecfa;
 }
 
 /* lists */

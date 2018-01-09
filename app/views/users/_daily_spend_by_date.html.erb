@@ -1,6 +1,6 @@
 <h3>Spending by date</h3>
-<p>Your average spend to date is <%= @user.primary_currency %><%= @user.average_spend_to_date(current_user) %></p>
-<p>Total spend to date: <%= @user.daily_spending_total_to_now(current_user) %></p>
+<p>Your average spend to date is <%= @user.primary_currency %><%= @user.average_spend_to_date(current_user).round(2) %></p>
+<p>Total spend to date: <%=@user.primary_currency %><%= @user.daily_spending_total_to_now(current_user) %></p>
 <p>Days passed: <%= Date.current.day %></p>
 <% date = DateTime.now.end_of_month.to_date %>
 <ul>

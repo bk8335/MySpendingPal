@@ -6,8 +6,7 @@
 		<td><%= @currency %><%= @user.format_currency(@user.spend_today(current_user)) %></td>
 		<td>=</td>
 		<td><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
-		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%></td>
-		<td><button class="btn btn-primary" id="complete-spend-today">Forecast End Balance*</button></td>
+		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-primary"%></td>
 	</tr>
 	<tr>
 		<td>Goal</td>

@@ -231,4 +231,12 @@ class User < ApplicationRecord
       "red-day"
     end
   end
+
+  def broke_before_end(user)
+    if forecast_broke_date(user) < Date.today.end_of_month
+      'btn btn-danger'
+    else
+      'btn btn-success'
+    end
+  end
 end

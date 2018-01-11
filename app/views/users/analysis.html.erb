@@ -1,0 +1,36 @@
+<h2>Analysis</h2>
+<p>Your monthly spending by category</p>
+<table>
+	<tr>
+		<th>Category</th>
+		<th>Amount of Income (%)</th>
+	</tr>
+	<tr>
+		<td>Savings</td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_savings(current_user)) %>%</td>
+	</tr>
+		<% @grouped_monthly_expenses.each do |group| %>
+	<tr>
+		<td><%= group.category %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, group.amount) %>%</td>
+		<% end %>
+	</tr>
+	<tr>
+		<td><strong>Daily Spending</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.disposable_income(current_user))%>%</strong></td>
+	</tr>
+</table>
+
+<p>Your daily spending by category</p>
+<table>
+	<tr>
+		<th>Category</th>
+		<th>Amount of Disposable Income (%)</th>
+	</tr>
+	<% @grouped_daily_expenses.each do |daily_group| %>
+	<tr>
+		<td><%= daily_group.category %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_disposable_income(current_user, daily_group.amount) %>%</td>
+		<% end %>
+	</tr>
+</table>

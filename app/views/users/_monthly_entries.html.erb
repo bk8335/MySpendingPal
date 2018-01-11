@@ -10,7 +10,7 @@
 			<th>Name</th>
 			<th>Amount</th>
 			<th>Date</th>
-			<th>Regular?</th>
+			<th>Regular</th>
 			<th>Share of Total Income</th>
 		</tr>
 	<% @incomes.each do |income| %>
@@ -18,14 +18,14 @@
 			<td><%= income.name %></td>
 			<td><%= @currency %><%= @user.format_currency(income.amount) %></td>
 			<td><%= income.date.strftime("%e %B") %></td>
-			<td>
+			<td class='cell-centre'>
 				<% if income.regular %>
 				<%= image_tag('tick.png', alt: "true") %>
 				<% else %>
 				<%= image_tag('cross.png', alt: "false") %>
 				<% end %>
 			</td>
-			<td><%= ((income.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
+			<td class='cell-centre'><%= ((income.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 			<td><%= link_to "Edit entry", edit_user_income_path(current_user, income) %></td>
 			<td><%= link_to "Delete", income, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
@@ -47,7 +47,7 @@
 			<th>Amount</th>
 			<th>Category</th>
 			<th>Date</th>
-			<th>Regular?</th>
+			<th>Regular</th>
 			<th>Share of Total Income</th>
 		</tr>
 	<% @expenses.each do |expense| %>
@@ -56,14 +56,14 @@
 		<td><%= @currency %><%= @user.format_currency(expense.amount) %></td>
 		<td><%= expense.category %></td>
 		<td><%= expense.date.strftime("%e %B") %></td>
-		<td>
+		<td class='cell-centre'>
 				<% if expense.regular %>
 				<%= image_tag('tick.png', alt: "true") %>
 				<% else %>
 				<%= image_tag('cross.png', alt: "false") %>
 				<% end %>
 			</td>
-		<td><%= ((expense.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
+		<td class='cell-centre'><%= ((expense.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 		<td><%= link_to "Edit entry", edit_user_expense_path(current_user, expense) %></td>
 		<td><%= link_to "Delete", expense, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
@@ -90,14 +90,14 @@
 	<tr>
 		<td><%= saving.name %></td>
 		<td><%= @currency %><%= @user.format_currency(saving.amount) %></td>
-		<td>
+		<td class='cell-centre'>
 				<% if saving.regular %>
 				<%= image_tag('tick.png', alt: "true") %>
 				<% else %>
 				<%= image_tag('cross.png', alt: "false") %>
 				<% end %>
 			</td>
-		<td><%= ((saving.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
+		<td class='cell-centre'><%= ((saving.amount / @user.recurring_incomes(current_user))*100).round(1) %>%</td>
 		<td><%= link_to "Edit entry", edit_user_saving_path(current_user, saving) %></td>
 		<td><%= link_to "Delete", saving, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>

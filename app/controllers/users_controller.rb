@@ -49,6 +49,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def analysis
+    @grouped_monthly_expenses = current_user.expenses.group(:category).sort_by {|category| category.amount }.reverse!
+    @grouped_daily_expenses = current_user.daily_expenses.group(:category).sort_by {|category| category.amount }.reverse!
+  end
+
 private
   def user_params
   	params.require(:user).permit(

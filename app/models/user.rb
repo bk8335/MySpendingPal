@@ -233,10 +233,18 @@ class User < ApplicationRecord
   end
 
   def broke_before_end(user)
-    if forecast_broke_date(user) < Date.today.end_of_month
+    if days_ahead_or_behind(user) < 0
       'btn btn-danger'
     else
       'btn btn-success'
     end
+  end
+
+  def percentage_of_income(user, number)
+    ((number / recurring_incomes(user))*100).round(1)
+  end
+
+  def percentage_of_disposable_income(user, number)
+    ((number / disposable_income(user))*100).round(1)
   end
 end

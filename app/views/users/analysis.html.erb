@@ -4,33 +4,44 @@
 	<tr>
 		<th>Category</th>
 		<th>Amount of Income (%)</th>
+		<th>Amount (<%= current_user.primary_currency %>)</th>
 	</tr>
 	<tr>
-		<td>Savings</td>
-		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_savings(current_user)) %>%</td>
+		<td>Income</td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_incomes(current_user)) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(current_user.recurring_incomes(current_user)) %></td>
 	</tr>
 		<% @grouped_monthly_expenses.each do |group| %>
 	<tr>
 		<td><%= group.category %></td>
 		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, group.amount) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(group.amount) %></td>
 		<% end %>
 	</tr>
 	<tr>
-		<td><strong>Daily Spending</strong></td>
+		<td>Savings</td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_savings(current_user)) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(current_user.recurring_savings(current_user)) %></td>
+	</tr>
+	<tr>
+		<td><strong>Disposable Income</strong></td>
 		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.disposable_income(current_user))%>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency(current_user.disposable_income(current_user)) %></strong></td>
 	</tr>
 </table>
 
-<p>Your daily spending by category</p>
+<p>Your daily spending by category so far</p>
 <table>
 	<tr>
 		<th>Category</th>
 		<th>Amount of Disposable Income (%)</th>
-	</tr>
+		<th>Amount (<%= current_user.primary_currency %>)</th>
+</tr>
 	<% @grouped_daily_expenses.each do |daily_group| %>
 	<tr>
 		<td><%= daily_group.category %></td>
 		<td class='cell-centre'><%= current_user.percentage_of_disposable_income(current_user, daily_group.amount) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(daily_group.amount) %></td>
 		<% end %>
 	</tr>
 </table>

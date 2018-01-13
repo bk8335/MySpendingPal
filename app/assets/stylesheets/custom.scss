@@ -138,18 +138,25 @@ table {
     font-family: 'Work Sans', sans-serif;
     border-collapse: collapse;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
 .cell-centre {
   text-align: center;
+}
+
+th {
+  background-color: #15659d;
+  color: white;
 }
 
 tr:nth-child(odd) {

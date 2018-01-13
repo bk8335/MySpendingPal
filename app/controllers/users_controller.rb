@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 
   def monthly_entries
     @user = current_user
-    @incomes = @user.incomes.all.order('date DESC')
-    @expenses = @user.expenses.all.order('date DESC')
+    @incomes = @user.incomes.all.order('amount DESC')
+    @expenses = @user.expenses.all.order('amount DESC')
     @savings = @user.savings.all
     @daily_expenses = @user.daily_expenses.all.order('date DESC')
     @currency = @user.primary_currency
@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def analysis
+    @currency = current_user.primary_currency
     @grouped_monthly_expenses = current_user.expenses.group(:category).sort_by {|category| category.amount }.reverse!
     @grouped_daily_expenses = current_user.daily_expenses.group(:category).sort_by {|category| category.amount }.reverse!
   end

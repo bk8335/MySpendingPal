@@ -138,11 +138,16 @@ table {
     font-family: 'Work Sans', sans-serif;
     border-collapse: collapse;
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
+}
+
+tr {
+  flex-wrap: wrap;
 }
 
 td, th {
@@ -197,3 +202,9 @@ img {
 }
 }
 
+/* header bar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

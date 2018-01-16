@@ -1,4 +1,4 @@
-<h2>Welcome <%= @user.name%>!</h2>
+<h2>Welcome <%= @user.name%> - you have <%= @user.primary_currency %><%= @user.budget_left(current_user) %> remaining</h2>
 <hr>
 <%= render 'spend_left_today' %>
 <hr>

@@ -7,6 +7,16 @@
   box-sizing:         border-box;
 }
 
+html {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.2;
+}
+
 .logo-header {
   height: 100px;
   width: 142px;
@@ -81,6 +91,7 @@ body {
 p {
   font-size: 22px;
   line-height: 1.5;
+  color: #444444;
 }
 
 /* miscellaneous */

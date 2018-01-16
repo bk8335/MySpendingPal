@@ -2,8 +2,6 @@
 <hr>
 <%= render 'spend_left_today' %>
 <hr>
-<p>Your original daily budget was <%= @currency %><%= @user.format_currency(@user.daily_budget(current_user)) %> </p>
-<p>To hit your targets, your latest daily budget is <%= @currency %><%= @user.format_currency(@user.dynamic_daily_budget(current_user)) %></p>
 <%= render 'progress' %>
 <hr>
 <%= render 'daily_spend_by_date' %>

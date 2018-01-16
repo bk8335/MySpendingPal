@@ -18,6 +18,7 @@
 </table>
 
 <div id="forecast-spend">
+<p>Your average daily spending has been <%= @currency %><%= @user.format_currency(@user.average_spend_to_date(current_user)) %> </p>	
 <h2 ><%= @user.forecast_result(current_user) %>
 	<br />You would have a balance of <%= @currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month.
 </h2>

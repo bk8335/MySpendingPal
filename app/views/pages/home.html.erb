@@ -1,12 +1,8 @@
-<h1>MySpendingPal</h1>
-
-<h4>Make sure you won’t run out of money before the end of the month</h4>
+<h2 class="italic">Make your money last the month</h2>
 
 <% if logged_in? && new_user? %>
 <%= render 'getting_started' %>
-<hr>
 <% elsif logged_in? %>
-<hr>
 	<div id="forecast-spend">
 	<h2 ><%= @user.forecast_result(current_user) %>
 		<br />You would have a balance of <%= @user.primary_currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month.
@@ -14,12 +10,9 @@
 	<p><small>*This is your average daily spending to date for the whole month, less any future daily items you've already committed to</small></p>
 	</div>
 	<%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%>
-<hr>
 <% end %>
-<p>See the date you'll run out of money</p>
-<% unless logged_in? %>
-	<%= image_tag("forecast-balance.png", alt: "forecast balance", class: 'homepage-screenshot') %>
-<% end %>
+
+<div class="money-shoots">
 <ul>
 	<li>Automatically have your daily budget calculated for you</li>
 	<li>Put expenses in before they occur</li>
@@ -30,5 +23,4 @@
 <% unless logged_in? %>
 	<%= link_to 'Sign up now!', signup_path(@user), class: "btn btn-success"%>
 <% end %>
-
-<%= image_tag "money-shoots.jpg", class: 'homepage-image center-image' %>
+</div>

@@ -1,7 +1,7 @@
 <div>
 	<nav>
 	<ul class = "nav navbar-nav">
-		<li><%= link_to image_tag('msp_logo4.png', alt: "Home", class: "logo-header"), root_path %></li>
+		<li><%= link_to image_tag('msp_logo_crop.png', alt: "Home", class: "logo-header"), root_path %></li>
 		<% if logged_in? %>
 			<li><%= link_to "Daily entries", current_user %></li>
 			<li><%= link_to current_user.days_ahead_or_behind(current_user), current_user, class: current_user.broke_before_end(current_user) %></li>
@@ -11,7 +11,7 @@
 			<li><%= link_to "Log out", logout_path, method: :delete %></li>
 		<% else %>
 			<li><%= link_to "Log in", login_path %></li>
-			<li><%= link_to "Sign up!", signup_path(@user), class: 'btn btn-success' %></li>
+			<li><%= link_to "Sign up", signup_path(@user), class: 'btn btn-success' %></li>
 		<% end %>
 	</ul>
 </nav>

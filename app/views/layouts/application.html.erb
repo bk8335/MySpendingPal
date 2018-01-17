@@ -2,8 +2,9 @@
 <html>
   <head>
   	<%= render '/google_analytics' %>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <title>Myspendingpal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">
+    <title>MySpendingPal</title>
+    <meta name="description" content="Make your money last the month">
     <%= render 'application/favicon' %>
     <%= csrf_meta_tags %>
 
@@ -20,7 +21,6 @@
     <div class='main-page-content'>
       <%= yield %>
     </div>
-    <hr>
     <%= render 'pages/footer' %>
     
   </body>

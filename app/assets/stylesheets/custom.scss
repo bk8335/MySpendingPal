@@ -11,98 +11,22 @@ html {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Nunito', sans-serif;
+  color: #444444;
+}
+
+body {
+  background: #7EC0EE;
 }
 
 h1, h2, h3, h4, h5 {
   line-height: 1.2;
 }
 
-.logo-header {
-  height: 100px;
-  width: 142px;
-}
-
-.homepage-image {
-  height: 50%;
-  width: 50%;
-  opacity: 0.5;
-  box-shadow: 8px 8px 10px #aaa;
-  border-radius: 2%;  // partially rounded corners
-  margin: 10px;
-}
-
-.homepage-screenshot {
-  margin: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;  
-  height: 70%;
-  width: 70%;
-  border: 1px solid;
-}
-
-.getting-started {
-  height: 50%;
-  width: 50%;
-  border: 1px solid;
-  margin-bottom: 20px;
-}
-
-.green-day{
-  list-style-position: inside;
-  border: 2px solid green;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.red-day{
-  list-style-position: inside;
-  border: 2px solid red;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.future-day {
-  list-style-position: inside;
-  margin-bottom: 10px;
-}
-
-body {
-  background: #7EC0EE;
-  font-family: 'Raleway', 'Work Sans', sans-serif;
-  margin-left: 10px;
-
-}
-
-.main-page-content {
-  padding-top: 115px;
-}
-
-.center-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.center-text {
-  text-align: center;
-}
-
 p {
-  font-size: 22px;
-  line-height: 1.5;
-  color: #444444;
+  font-size: 18px;
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
 
 /* forms */
 
@@ -122,15 +46,6 @@ input {
   height: auto !important;
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -146,7 +61,6 @@ button:hover {
 /* tables */
 
 table {
-    font-family: 'Work Sans', sans-serif;
     border-collapse: collapse;
     display: flex;
     flex-wrap: wrap;
@@ -189,33 +103,39 @@ tr:nth-child(even) {
   margin-top: 5px;
 }
 
-li {
-  margin-bottom: 5px;
-}
-
-ul {
-  width: 80%;
-}
-
 /* images */
 img {
   max-width: 100%;
 }
 
-
-@media screen and (max-width: 500px) {
-/* applies only if the screen is narrower than 500px */
-  td, th {
-    padding: 2px;
-  }
-  ul {
-   width: 100%;
-}
+.logo-header {
+  height: 24px;
+  width: 140px;
 }
 
 /* header bar */
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  background-color: white;
+}
+
+navbar-nav {
+  color: white;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.money-shoots {
+  display: flex;
+  align-items: center;
+  color: white;
+  width: 650px;
+  height: 450px;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-data-url("money-shoots.jpg");
+  position: relative;
 }

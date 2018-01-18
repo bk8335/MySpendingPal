@@ -13,10 +13,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Nunito', sans-serif;
   color: #444444;
+  margin: 0;
 }
 
 body {
   background: #7EC0EE;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5 {
@@ -121,12 +123,22 @@ nav {
   background-color: white;
 }
 
-navbar-nav {
-  color: white;
+.navbar-toggle {
+  background-color: #7EC0EE;
+}
+
+.footer {
+  right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .italic {
   font-style: italic;
+}
+
+.tagline {
+    max-width: 100%;
 }
 
 .money-shoots {
@@ -138,4 +150,12 @@ navbar-nav {
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-data-url("money-shoots.jpg");
   position: relative;
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .money-shoots {
+    width: 100%;
+    }
 }

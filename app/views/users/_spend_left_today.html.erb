@@ -1,4 +1,5 @@
 <h4>Spend left today</h4>
+<div style="overflow-x:auto;">
 <table>
 	<tr>
 		<td><%= @currency %><%= @user.format_currency(@user.dynamic_daily_budget(current_user)) %></td>
@@ -16,6 +17,7 @@
 		<td>Remaining</td>
 	</tr>
 </table>
+</div>
 
 <div id="forecast-spend">
 <p>Your average daily spending has been <%= @currency %><%= @user.format_currency(@user.average_spend_to_date(current_user)) %> </p>	

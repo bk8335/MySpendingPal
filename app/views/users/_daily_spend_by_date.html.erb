@@ -5,6 +5,7 @@
 <% date = DateTime.now.end_of_month.to_date %>
 
 <% loop do %>
+<div style="overflow-x:auto;">
 <table class="daily-entries-table">
   <tr>
   <th class="daily-spend-by-date"><%= date.strftime("%e %B") %></th>
@@ -26,5 +27,6 @@
   <% date -= 1.day %>
   <% break if (date.month == (DateTime.now.month - 1)) || (date.month == 12 && (DateTime.now.month == 1)) %>
 </table>
+</div>
 <br>
 <% end %>

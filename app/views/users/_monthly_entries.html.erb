@@ -5,6 +5,7 @@
 	<p>You haven't added any incomes yet!</p>
 	<%= link_to "Add your first income entry", new_user_income_path(current_user)%>
 <% else %>
+<div style="overflow-x:auto;">
 	<table>
 		<tr>
 			<th>Name</th>
@@ -32,6 +33,7 @@
 		</tr>
 	<% end %>
 	</table>
+</div>
 	<%= link_to "Add additional incomes", new_user_income_path(current_user)%>
 <% end %>
 
@@ -41,6 +43,7 @@
 	<%= link_to "Add your first expense entry", new_user_expense_path(current_user)%>
 <% else %>
 <p><%= ((@user.recurring_expenses(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
+	<div style="overflow-x:auto;">
 	<table>
 		<tr>
 			<th>Name</th>
@@ -70,6 +73,7 @@
 	</tr>
 	<% end %>
 	</table>
+</div>
 	<%= link_to "Add additional expenses", new_user_expense_path(current_user)%>
 <% end %>
 
@@ -79,6 +83,7 @@
 	<%= link_to "Add your first saving entry", new_user_saving_path(current_user)%>
 <% else %>
 <p><%= ((@user.recurring_savings(current_user) / @user.recurring_incomes(current_user)) * 100).round(1) %>% of total income</p>
+	<div style="overflow-x:auto;">
 	<table>
 	<tr>
 		<th>Name</th>
@@ -104,5 +109,6 @@
 	</tr>
 	<% end %>
 	</table>
+</div>
 	<%= link_to "Add additional savings", new_user_saving_path(current_user)%>
 <% end %>

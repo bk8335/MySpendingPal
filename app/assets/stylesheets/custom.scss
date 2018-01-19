@@ -64,8 +64,6 @@ button:hover {
 
 table {
     border-collapse: collapse;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     margin-left: 10%;
@@ -155,6 +153,13 @@ nav {
 
 
 @media screen and (max-width: 480px) {
+    body {
+      display: block
+    }
+
+    table {
+    max-width: 100%;
+    }
     .money-shoots {
     width: 100%;
     }

@@ -1,5 +1,4 @@
-<h2>Welcome <%= @user.name%> - you have <%= @user.primary_currency %><%= @user.budget_left(current_user) %> remaining</h2>
-<hr>
+<h2>Daily entries</h2>
 <%= render 'spend_left_today' %>
 <hr>
 <%= render 'progress' %>

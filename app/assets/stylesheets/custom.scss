@@ -149,14 +149,14 @@ nav {
 .money-shoots {
   display: flex;
   align-items: center;
+  flex-direction: column;
   color: white;
   width: 650px;
-  height: 450px;
+  height: 400px;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-data-url("money-shoots.jpg");
   position: relative;
 }
-
 
 
 @media screen and (max-width: 480px) {

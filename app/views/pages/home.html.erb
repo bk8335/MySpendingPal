@@ -1,10 +1,7 @@
-<div class="tagline">
-	<h2 class="italic">Make your money last the month</h2>
-</div>
-
 <% if logged_in? && new_user? %>
 <%= render 'getting_started' %>
 <% elsif logged_in? %>
+	<h2>Welcome <%= @user.name%> - you have <%= @user.primary_currency %><%= @user.budget_left(current_user) %> remaining</h2>
 	<div id="forecast-spend">
 	<h2 ><%= @user.forecast_result(current_user) %>
 		<br />You would have a balance of <%= @user.primary_currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month.
@@ -14,12 +11,19 @@
 <% end %>
 
 <div class="money-shoots">
-<ul>
+	<div class="tagline">
+		<h2 class="italic">Make your money last the month</h2>
+	<br>
+	<br>
+	<br>
+	</div>
+<ul class="benefits">
+	<li>See the date you're forecast to run out of money</li>
 	<li>Automatically have your daily budget calculated for you</li>
 	<li>Put expenses in before they occur</li>
 	<li>Set a savings goal</li>
 	<li>We don't need or care about your bank details</li>
-	<li>You'll remember your spending more if you enter it yourself - <i>you are what you measure</i></li>
+	<li>You'll remember your spending more if you enter it yourself!</li>
 </ul>
 <% unless logged_in? %>
 	<%= link_to 'Sign up now!', signup_path(@user), class: "btn btn-success"%>

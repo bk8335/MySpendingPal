@@ -103,10 +103,15 @@ tr:nth-child(even) {
     background-color: #d8ecfa;
 }
 
+.daily-spend-name {
+  width: 35%;
+}
+
 /* lists */
 .daily-spend-by-date {
   margin-bottom: 5px;
   margin-top: 5px;
+  width: 20%;
 }
 
 /* images */

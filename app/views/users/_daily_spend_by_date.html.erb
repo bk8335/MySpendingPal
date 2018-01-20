@@ -6,11 +6,11 @@
 <div style="overflow-x:auto;">
 <table class="daily-entries-table">
   <tr class=<%= current_user.green_or_red(current_user, date) %>>
-  <th class="daily-spend-by-date"><%= date.strftime("%e %B") %></th>
-  <th><%= @currency %><%= @user.format_currency(@user.spend_on_date(current_user, date))%></th>
-  <th><%=link_to "Add entry", new_user_daily_expense_path(current_user, date), class: "btn btn-default"%></th>
-  <th></th>
-  <th></th>
+    <th class="daily-spend-by-date"><%= date.strftime("%e %B") %></th>
+    <th class="daily-spend-name"><%= @currency %><%= @user.format_currency(@user.spend_on_date(current_user, date))%></th>
+    <th class="daily-spend-category"><%=link_to "Add entry", new_user_daily_expense_path(current_user, date), class: "btn btn-default"%></th>
+    <th class="daily-spend-edit"></th>
+    <th class="daily-spend-delete"></th>
   </tr>
   <% items_in_day = @user.daily_spend_detail(current_user, date) %>
   <% items_in_day.each do |item| %>

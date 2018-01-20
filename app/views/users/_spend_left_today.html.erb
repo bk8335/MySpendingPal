@@ -1,13 +1,13 @@
 <h4>Spend left today</h4>
 <div style="overflow-x:auto;">
-<table>
+<table class='spend-left-today'>
 	<tr>
-		<td><%= @currency %><%= @user.format_currency(@user.dynamic_daily_budget(current_user)) %></td>
-		<td>-</td>
-		<td><%= @currency %><%= @user.format_currency(@user.spend_today(current_user)) %></td>
-		<td>=</td>
-		<td><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
-		<td><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-primary"%></td>
+		<td class="spend-left"><%= @currency %><%= @user.format_currency(@user.dynamic_daily_budget(current_user)) %></td>
+		<td class="math-symbol">-</td>
+		<td class="spend-left"><%= @currency %><%= @user.format_currency(@user.spend_today(current_user)) %></td>
+		<td class="math-symbol">=</td>
+		<td class="spend-left"><strong><%= @currency %><%= @user.format_currency(@user.remaining_today(current_user)) %></strong></td>
+		<td class="spend-left"><%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-primary"%></td>
 	</tr>
 	<tr>
 		<td>Goal</td>

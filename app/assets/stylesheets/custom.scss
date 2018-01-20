@@ -103,8 +103,20 @@ tr:nth-child(even) {
     background-color: #d8ecfa;
 }
 
+.spend-left-today {
+  width: 20%;
+}
+
 .daily-spend-name {
   width: 35%;
+}
+
+.math-symbol {
+  width: 2.5%;
+}
+
+.spend-left {
+  width: 5%;
 }
 
 /* lists */
@@ -170,9 +182,12 @@ nav {
     }
 
     table {
-    max-width: 100%;
+      max-width: 100%;
     }
     .money-shoots {
-    width: 100%;
+      width: 100%;
+    }
+    .spend-left-today {
+      margin-left: 2px;
     }
 }

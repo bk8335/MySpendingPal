@@ -182,8 +182,7 @@ class User < ApplicationRecord
 
   def forecast_result(user)
     if forecast_end_balance(user) >= 0
-      "Great job, you're ahead of target by #{days_ahead_or_behind(user)} days!
-      Your current rate of spending will last you until #{forecast_broke_date(user).strftime("%e %B")}."
+      "Great job, you're ahead of target by #{days_ahead_or_behind(user)} days!"
     else
       "At this rate, you're going to be out of money by the #{forecast_broke_date(user).strftime("%e %B")}."
     end

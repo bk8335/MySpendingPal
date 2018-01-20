@@ -9,7 +9,6 @@
 	<h2 ><%= @user.forecast_result(current_user) %>
 		<br />You would have a balance of <%= @user.primary_currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month.
 	</h2>
-	<p><small>*This is your average daily spending to date for the whole month, less any future daily items you've already committed to</small></p>
 	</div>
 	<%=link_to "Add daily entry", new_user_daily_expense_path(current_user), class: "btn btn-success"%>
 <% end %>

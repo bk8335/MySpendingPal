@@ -19,6 +19,12 @@ html {
 body {
   background: #7EC0EE;
   height: 100%;
+  
+}
+
+.main-page-content {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -127,8 +133,9 @@ nav {
 
 .footer {
   right: 0;
-    bottom: 0;
-    left: 0;
+  bottom: 0;
+  left: 0;
+  clear: both;
 }
 
 .italic {

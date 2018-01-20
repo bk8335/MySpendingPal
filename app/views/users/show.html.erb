@@ -7,7 +7,7 @@
 <%= render 'daily_spend_by_date' %>
 <hr>
 
-<h3>View your monthly income/outgoings <%= link_to 'here', user_monthly_entries_path(current_user) %> to calcuate your daily budget</h3>
+<h3>View your monthly income/outgoings <%= link_to 'here', user_monthly_entries_path(current_user) %> to calculate your daily budget</h3>
 <ul>
 	<li><%= link_to "Income", new_user_income_path(current_user)%> - <%= @currency %><%= @user.format_currency(@user.recurring_incomes(current_user))%></li>
 	<li><%= link_to "Expenses", new_user_expense_path(current_user)%>- <%= @currency %><%= @user.format_currency(@user.recurring_expenses(current_user))%></li>

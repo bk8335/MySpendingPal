@@ -1,10 +1,10 @@
 <h2>Analysis</h2>
 <p>Your monthly spending by category</p>
-<table>
+<table class='analysis-table'>
 	<tr>
-		<th>Category</th>
-		<th>Amount of Income (%)</th>
-		<th>Amount (<%= current_user.primary_currency %>)</th>
+		<th class='analysis-category'>Category</th>
+		<th class='analysis-percentage'>Amount of Income (%)</th>
+		<th class='analysis-currency'>Amount (<%= current_user.primary_currency %>)</th>
 	</tr>
 	<tr>
 		<td>Income</td>
@@ -31,11 +31,11 @@
 </table>
 <br>
 <p>Your daily spending by category so far</p>
-<table>
+<table class='analysis-table'>
 	<tr>
-		<th>Category</th>
-		<th>Amount of Disposable Income (%)</th>
-		<th>Amount (<%= current_user.primary_currency %>)</th>
+		<th class='analysis-category'>Category</th>
+		<th class='analysis-percentage'>Amount of Disposable Income (%)</th>
+		<th class='analysis-currency'>Amount (<%= current_user.primary_currency %>)</th>
 </tr>
 	<% @grouped_daily_expenses.each do |daily_group| %>
 	<tr>

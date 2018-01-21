@@ -13,9 +13,9 @@
 	</tr>
 		<% @grouped_monthly_expenses.each do |group| %>
 	<tr>
-		<td><%= group.category %></td>
-		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, group.amount) %>%</td>
-		<td><%= @currency %><%= current_user.format_currency(group.amount) %></td>
+		<td><%= group.first %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, group.last) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(group.last) %></td>
 		<% end %>
 	</tr>
 	<tr>
@@ -39,9 +39,9 @@
 </tr>
 	<% @grouped_daily_expenses.each do |daily_group| %>
 	<tr>
-		<td><%= daily_group.category %></td>
-		<td class='cell-centre'><%= current_user.percentage_of_disposable_income(current_user, daily_group.amount) %>%</td>
-		<td><%= @currency %><%= current_user.format_currency(daily_group.amount) %></td>
+		<td><%= daily_group.first %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_disposable_income(current_user, daily_group.last) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(daily_group.last) %></td>
 		<% end %>
 	</tr>
 </table>

@@ -51,8 +51,9 @@ class UsersController < ApplicationController
 
   def analysis
     @currency = current_user.primary_currency
-    @grouped_monthly_expenses = current_user.expenses.group(:category).sort_by {|category| category.amount }.reverse!
-    @grouped_daily_expenses = current_user.daily_expenses.group(:category).sort_by {|category| category.amount }.reverse!
+    @grouped_monthly_expenses = current_user.expenses.group(:category).sum(:amount)
+    @grouped_daily_expenses = current_user.daily_expenses.group(:category).sum(:amount)
+    debugger
   end
 
 private

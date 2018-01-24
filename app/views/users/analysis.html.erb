@@ -1,5 +1,5 @@
 <h2>Analysis</h2>
-<p>Your monthly spending by category</p>
+<p>Your <%= Date.today.strftime("%B") %> monthly spending by category</p>
 <table class='analysis-table'>
 	<tr>
 		<th class='analysis-category'>Category</th>
@@ -30,7 +30,7 @@
 	</tr>
 </table>
 <br>
-<p>Your daily spending by category so far</p>
+<p>Your <%= Date.today.strftime("%B") %> daily spending by category (so far)</p>
 <table class='analysis-table'>
 	<tr>
 		<th class='analysis-category'>Category</th>
@@ -40,9 +40,14 @@
 	<% @grouped_daily_expenses.each do |daily_group| %>
 	<tr>
 		<td><%= daily_group.first %></td>
-		<td class='cell-centre'><%= current_user.percentage_of_disposable_income(current_user, daily_group.last) %>%</td>
+		<td class='cell-centre'><%= current_user.percentage_of_daily_spending_total(current_user, daily_group.last) %>%</td>
 		<td><%= @currency %><%= current_user.format_currency(daily_group.last) %></td>
 		<% end %>
+	</tr>
+	<tr><strong>
+		<td><strong>Daily Spending Total</strong></td>
+		<td class='cell-centre'><strong>100.0%</strong></td>
+		<td><strong><%= @currency %><%= current_user.daily_spending_total(current_user) %></strong></td>
 	</tr>
 </table>
 <br >

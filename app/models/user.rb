@@ -246,4 +246,8 @@ class User < ApplicationRecord
   def percentage_of_disposable_income(user, number)
     ((number / disposable_income(user))*100).round(1)
   end
+
+  def percentage_of_daily_spending_total(user, number)
+    ((number / daily_spending_total(user))*100).round(1)
+  end
 end

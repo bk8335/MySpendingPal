@@ -15,6 +15,7 @@
 			<th>Share of Total Income</th>
 		</tr>
 	<% @incomes.each do |income| %>
+	<% if income.month == Date.today.month %>
 		<tr>
 			<td><%= income.name %></td>
 			<td><%= @currency %><%= @user.format_currency(income.amount) %></td>
@@ -31,6 +32,7 @@
 			<td><%= link_to "Delete", income, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 		</tr>
+	<% end %>
 	<% end %>
 	</table>
 </div>
@@ -54,6 +56,7 @@
 			<th>Share of Total Income</th>
 		</tr>
 	<% @expenses.each do |expense| %>
+	<% if expense.month == Date.today.month %>
 	<tr>
 		<td><%= expense.name %></td>
 		<td><%= @currency %><%= @user.format_currency(expense.amount) %></td>
@@ -71,6 +74,7 @@
 		<td><%= link_to "Delete", expense, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 	</tr>
+	<% end %>
 	<% end %>
 	</table>
 </div>
@@ -92,6 +96,7 @@
 		<th>Share of Total Income</th>
 	</tr>	
 	<% @savings.each do |saving| %>
+	<% if saving.month == Date.today.month %>
 	<tr>
 		<td><%= saving.name %></td>
 		<td><%= @currency %><%= @user.format_currency(saving.amount) %></td>
@@ -107,6 +112,7 @@
 		<td><%= link_to "Delete", saving, method: :delete,
 							data: { confirm: "Are you sure you want to delete this entry?" }%></td>
 	</tr>
+	<% end %>
 	<% end %>
 	</table>
 </div>

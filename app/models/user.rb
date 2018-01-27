@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def recurring_savings(user)
-    user.incomes.where(month: Date.today.month).sum(:amount)
+    user.savings.where(month: Date.today.month).sum(:amount)
   end
 
   def budget_share_of_income(user)

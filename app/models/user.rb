@@ -58,6 +58,22 @@ class User < ApplicationRecord
     user.savings.sum(:amount)
   end
 
+  def disposable_income_current_month(user)
+    recurring_incomes_current_month(user) - recurring_expenses_current_month(user) - recurring_savings_current_month(user)
+  end
+
+  def recurring_incomes_current_month(user)
+    user.incomes.sum(:amount)
+  end
+
+  def recurring_expenses_current_month(user)
+    user.expenses.sum(:amount)
+  end
+
+  def recurring_savings_current_month(user)
+    user.savings.sum(:amount)
+  end
+
   def budget_share_of_income(user)
     if disposable_income(user) == 0
       return 0

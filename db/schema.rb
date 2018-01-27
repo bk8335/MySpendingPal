@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106084652) do
+ActiveRecord::Schema.define(version: 20180127151347) do
 
   create_table "daily_expenses", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180106084652) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "month"
     t.index ["user_id"], name: "index_daily_expenses_on_user_id"
   end
 
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180106084652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "month"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180106084652) do
     t.datetime "updated_at", null: false
     t.date "date"
     t.integer "user_id"
+    t.integer "month"
     t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
@@ -68,6 +71,7 @@ ActiveRecord::Schema.define(version: 20180106084652) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "name"
+    t.integer "month"
     t.index ["user_id"], name: "index_savings_on_user_id"
   end
 

@@ -5,7 +5,7 @@ class DailyExpense < ApplicationRecord
   validates :name, presence: true
   validates :category, presence: true
   validates :date, presence: true
-  after_create :set_month
+  before_save :set_month
 
   private 
 

@@ -183,6 +183,8 @@ class User < ApplicationRecord
   def forecast_result(user)
     if forecast_end_balance(user) >= 0
       "Great job, you're ahead of target by #{days_ahead_or_behind(user)} days!"
+    elsif budget_left(user) < 0
+      "You ran out of money on the #{forecast_broke_date(user).strftime("%e %B")}."
     else
       "At this rate, you're going to be out of money by the #{forecast_broke_date(user).strftime("%e %B")}."
     end
@@ -194,10 +196,17 @@ class User < ApplicationRecord
 
   def forecast_broke_date(user)
     balance = budget_left(user)
-    date = Date.current + 1.day
-    while balance > 0
+    date = Date.current
+    if balance > 0
+      while balance > 0
       balance -= (average_spend_to_date(user) + spend_on_date(user, date))
       date += 1.day
+      end
+    else
+      while balance < 0
+      balance += average_spend_to_date(user)
+      date -= 1.day
+      end
     end
     return date
   end

@@ -3,13 +3,13 @@
 <table class='analysis-table'>
 	<tr>
 		<th class='analysis-category'>Category</th>
-		<th class='analysis-percentage'>Amount of Income (%)</th>
+		<th class='analysis-percentage'>Amount of Total Income (%)</th>
 		<th class='analysis-currency'>Amount (<%= current_user.primary_currency %>)</th>
 	</tr>
 	<tr>
-		<td>Income</td>
-		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_incomes(current_user)) %>%</td>
-		<td><%= @currency %><%= current_user.format_currency(current_user.recurring_incomes(current_user)) %></td>
+		<td><strong>Income</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.recurring_incomes(current_user)) %>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency(current_user.recurring_incomes(current_user)) %></strong></td>
 	</tr>
 		<% @grouped_monthly_expenses.each do |group| %>
 	<tr>
@@ -22,6 +22,11 @@
 		<td>Savings</td>
 		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_savings(current_user)) %>%</td>
 		<td><%= @currency %><%= current_user.format_currency(current_user.recurring_savings(current_user)) %></td>
+	</tr>
+	<tr>
+		<td><strong>Fixed Spending Total</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, (current_user.recurring_expenses(current_user) + current_user.recurring_savings(current_user) ))%>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency((current_user.recurring_expenses(current_user) + current_user.recurring_savings(current_user) )) %></strong></td>
 	</tr>
 	<tr>
 		<td><strong>Disposable Income</strong></td>

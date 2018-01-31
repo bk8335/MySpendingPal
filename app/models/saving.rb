@@ -3,11 +3,11 @@ class Saving < ApplicationRecord
 	before_save :titlelize_names
 	validates :amount, presence: true, numericality: { greater_than: 0}
   validates :name, presence: true
-	after_create :set_month
+	before_save :set_month
 
   private 
 
   def set_month
-  	self.month = self.date.month
+  	self.month = self.created_at.month
   end
 end

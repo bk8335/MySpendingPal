@@ -201,6 +201,7 @@ class User < ApplicationRecord
       while balance >= 0
       balance -= (average_spend_to_date(user) + spend_on_date(user, date))
       date += 1.day
+      break if date == Date.current + 50.days
       end
     else
       while balance < 0

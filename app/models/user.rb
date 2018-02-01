@@ -47,15 +47,15 @@ class User < ApplicationRecord
   end
 
   def recurring_incomes(user)
-    user.incomes.sum(:amount)
+    user.incomes.where(month: Date.today.month).sum(:amount)
   end
 
   def recurring_expenses(user)
-    user.expenses.sum(:amount)
+    user.expenses.where(month: Date.today.month).sum(:amount)
   end
 
   def recurring_savings(user)
-    user.savings.sum(:amount)
+    user.savings.where(month: Date.today.month).sum(:amount)
   end
 
   def budget_share_of_income(user)
@@ -67,7 +67,7 @@ class User < ApplicationRecord
   end
 
   def daily_spending_total(user)
-    user.daily_expenses.sum(:amount)
+    user.daily_expenses.where(month: Date.today.month).sum(:amount)
   end
 
   def daily_spending_total_to_now(user)

@@ -67,7 +67,7 @@ class User < ApplicationRecord
   end
 
   def daily_spending_total(user)
-    user.daily_expenses.where(month: Date.today.month).sum(:amount)
+    user.daily_expenses.sum(:amount)
   end
 
   def daily_spending_total_to_now(user)

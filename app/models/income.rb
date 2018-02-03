@@ -4,7 +4,7 @@ class Income < ApplicationRecord
 	validates :amount, presence: true, numericality: { greater_than: 0}
   validates :name, presence: true
   validates :date, presence: true
-  after_create :set_month
+  before_save :set_month
 
   private 
 

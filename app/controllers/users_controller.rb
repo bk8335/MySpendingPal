@@ -50,9 +50,17 @@ class UsersController < ApplicationController
   end
 
   def analysis
+    @month = Date.today.month
     @currency = current_user.primary_currency
-    @grouped_monthly_expenses = current_user.expenses.group(:category).where(month: Date.today.month).sum(:amount)
-    @grouped_daily_expenses = current_user.daily_expenses.group(:category).where(month: Date.today.month).sum(:amount)
+    @grouped_monthly_expenses = current_user.expenses.group(:category).where(month: @month).sum(:amount)
+    @grouped_daily_expenses = current_user.daily_expenses.group(:category).where(month: @month).sum(:amount)
+  end
+
+  def analysis_last_month
+    @month = Date.today.month - 1
+    @currency = current_user.primary_currency
+    @grouped_monthly_expenses = current_user.expenses.group(:category).where(month: @month).sum(:amount)
+    @grouped_daily_expenses = current_user.daily_expenses.group(:category).where(month: @month).sum(:amount)
   end
 
 private

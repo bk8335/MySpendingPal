@@ -60,9 +60,13 @@ class User < ApplicationRecord
 
   def budget_share_of_income(user)
     if disposable_income(user) == 0
-      return 0
+      0
+    elsif ((disposable_income(user) / recurring_incomes(user))*100).round(1).to_f.nan?
+      0
+    elsif ((disposable_income(user) / recurring_incomes(user))*100).round(1).infinite?
+      'Over 100'
     else
-      ((disposable_income(user) / recurring_incomes(user))*100).round(1)
+       ((disposable_income(user) / recurring_incomes(user))*100).round(1)
     end
   end
 
@@ -249,14 +253,20 @@ class User < ApplicationRecord
   end
 
   def percentage_of_income(user, number)
-    ((number / recurring_incomes(user))*100).round(1)
+    if ((number / recurring_incomes(user))*100).round(1).to_f.nan?
+      0
+    elsif ((number / recurring_incomes(user))*100).round(1).infinite?
+      'Over 100'
+    else
+      ((number / recurring_incomes(user))*100).round(1)
+    end
   end
 
   def percentage_of_disposable_income(user, number)
-    ((number / disposable_income(user))*100).round(1)
+    ((number / disposable_income(user))*100).round(1).to_f.nan? ? 0 : ((number / disposable_income(user))*100).round(1)
   end
 
   def percentage_of_daily_spending_total(user, number)
-    ((number / daily_spending_total(user))*100).round(1)
+    ((number / daily_spending_total(user))*100).round(1).to_f.nan? ? 0 : ((number / daily_spending_total(user))*100).round(1) 
   end
 end

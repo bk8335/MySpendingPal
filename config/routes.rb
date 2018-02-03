@@ -41,10 +41,10 @@ resources :users do
     resources :daily_expenses
     get 'monthly_entries'
     get 'analysis'
+    get 'analysis/2018/January', to: 'users#analysis_last_month'
 end
 get '/signup',		to: 'users#new'
 post '/signup',		to: 'users#create'
-get 'users/monthly_summary'
   
 #entries
 resources :incomes

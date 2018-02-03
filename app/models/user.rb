@@ -46,6 +46,10 @@ class User < ApplicationRecord
     recurring_incomes(user) - recurring_expenses(user) - recurring_savings(user)
   end
 
+  def disposable_income_by_month(user, month)
+    recurring_incomes_by_month(user, month) - recurring_expenses_by_month(user, month) - recurring_savings_by_month(user, month)
+  end
+
   def recurring_incomes(user)
     user.incomes.where(month: Date.today.month).sum(:amount)
   end
@@ -56,6 +60,18 @@ class User < ApplicationRecord
 
   def recurring_savings(user)
     user.savings.where(month: Date.today.month).sum(:amount)
+  end
+
+  def recurring_incomes_by_month(user, month)
+    user.incomes.where(month: month).sum(:amount)
+  end
+
+  def recurring_expenses_by_month(user, month)
+    user.expenses.where(month: month).sum(:amount)
+  end
+
+  def recurring_savings_by_month(user, month)
+    user.savings.where(month: month).sum(:amount)
   end
 
   def budget_share_of_income(user)
@@ -72,6 +88,14 @@ class User < ApplicationRecord
 
   def daily_spending_total(user)
     user.daily_expenses.where(month: Date.today.month).sum(:amount)
+  end
+
+  def daily_spending_total_by_month(user, month)
+    user.daily_expenses.where(month: month).sum(:amount)
+  end
+
+  def budget_surplus_or_deficit_by_month(user, month)
+    disposable_income_by_month(user, month) - daily_spending_total_by_month(user, month)
   end
 
   def daily_spending_total_to_now(user)
@@ -268,5 +292,9 @@ class User < ApplicationRecord
 
   def percentage_of_daily_spending_total(user, number)
     ((number / daily_spending_total(user))*100).round(1).to_f.nan? ? 0 : ((number / daily_spending_total(user))*100).round(1) 
+  end
+
+  def entry_last_month?
+    true if recurring_expenses_by_month(self, Date.today.month - 1) > 0 || recurring_incomes_by_month(self, Date.today.month - 1) > 0 || recurring_savings_by_month(self, Date.today.month - 1) > 0
   end
 end

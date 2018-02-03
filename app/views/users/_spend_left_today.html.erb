@@ -20,7 +20,8 @@
 </div>
 
 <div id="forecast-spend">
-<p>Your average daily spending has been <%= @currency %><%= @user.format_currency(@user.average_spend_to_date(current_user)) %> </p>	
+<p>Your average daily spending has been <%= @currency %><%= @user.format_currency(@user.average_spend_to_date(current_user)) %> </p>
+<%= link_to "View last month's summary", user_analysis_2018_January_path(@user)  if @user.entry_last_month? %>
 <h2 ><%= @user.forecast_result(current_user) %>
 	<br />You would have a balance of <%= @currency %><%= @user.format_currency(@user.forecast_end_balance(current_user)) %> at the end of the month.
 </h2>

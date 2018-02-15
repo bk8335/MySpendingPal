@@ -28,4 +28,12 @@
 <% unless logged_in? %>
 	<%= link_to 'Sign up now!', signup_path(@user), class: "btn btn-success"%>
 <% end %>
+
 </div>
+
+<% unless logged_in? %>
+<hr>
+<%= render 'about' %>
+<hr>
+<%= render 'getting_started' %>
+<% end %>

@@ -152,6 +152,17 @@ img {
   height: 24px;
   width: 140px;
 }
+.getting-started {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  width: 650px;
+  height: 310px;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 10px;
+}
 
 /* header bar */
 nav {

@@ -1,0 +1,57 @@
+<p>Your <%= Date::MONTHNAMES[@month] %> monthly spending by category</p>
+<table class='analysis-table'>
+	<tr>
+		<th class='analysis-category'>Category</th>
+		<th class='analysis-percentage'>Amount of Total Income (%)</th>
+		<th class='analysis-currency'>Amount (<%= current_user.primary_currency %>)</th>
+	</tr>
+	<tr>
+		<td><strong>Income</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.recurring_incomes(current_user)) %>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency(current_user.recurring_incomes(current_user)) %></strong></td>
+	</tr>
+		<% @grouped_monthly_expenses.each do |group| %>
+	<tr>
+		<td><%= group.first %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, group.last) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(group.last) %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td>Savings</td>
+		<td class='cell-centre'><%= current_user.percentage_of_income(current_user, current_user.recurring_savings(current_user)) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(current_user.recurring_savings(current_user)) %></td>
+	</tr>
+	<tr>
+		<td><strong>Fixed Spending Total</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, (current_user.recurring_expenses(current_user) + current_user.recurring_savings(current_user) ))%>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency((current_user.recurring_expenses(current_user) + current_user.recurring_savings(current_user) )) %></strong></td>
+	</tr>
+	<tr>
+		<td><strong>Disposable Income</strong></td>
+		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.disposable_income(current_user))%>%</strong></td>
+		<td><strong><%= @currency %><%= current_user.format_currency(current_user.disposable_income(current_user)) %></strong></td>
+	</tr>
+</table>
+<br>
+<p>Your <%= Date::MONTHNAMES[@month] %> daily spending by category</p>
+<table class='analysis-table'>
+	<tr>
+		<th class='analysis-category'>Category</th>
+		<th class='analysis-percentage'>Amount of Disposable Income (%)</th>
+		<th class='analysis-currency'>Amount (<%= current_user.primary_currency %>)</th>
+</tr>
+	<% @grouped_daily_expenses.each do |daily_group| %>
+	<tr>
+		<td><%= daily_group.first %></td>
+		<td class='cell-centre'><%= current_user.percentage_of_daily_spending_total(current_user, daily_group.last) %>%</td>
+		<td><%= @currency %><%= current_user.format_currency(daily_group.last) %></td>
+		<% end %>
+	</tr>
+	<tr><strong>
+		<td><strong>Daily Spending Total</strong></td>
+		<td class='cell-centre'><strong>100.0%</strong></td>
+		<td><strong><%= @currency %><%= current_user.daily_spending_total(current_user) %></strong></td>
+	</tr>
+</table>
+<br >

@@ -1,0 +1,4 @@
+<h2>Analysis (<%= Date::MONTHNAMES[@month] %>)</h2>
+<%= link_to "Current month's analysis", user_analysis_2018_January_path %>
+<p> Budget surplus/deficit for <%= Date::MONTHNAMES[@month] %>: <strong><%= @currency %><%= current_user.format_currency(current_user.budget_surplus_or_deficit_by_month(current_user, @month)) %> </strong></p>
+<%= render 'analysis' %>

@@ -1,2 +1,2 @@
 <p>Time progress - <%= current_user.time_progress_percentage %>%</p>
-<p>Spend progress - <%= @user.spend_progress_percentage(current_user) %>% (<%= @user.primary_currency %><%= @user.budget_left(current_user) %> remaining)</p>
+<p>Spend progress - <%= @user.spend_progress_percentage(current_user) %>% (<%= @user.primary_currency %><%= @user.format_currency(@user.budget_left(current_user)) %> remaining)</p>

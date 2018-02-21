@@ -28,7 +28,7 @@
 		<td><strong><%= @currency %><%= current_user.format_currency((current_user.recurring_expenses(current_user) + current_user.recurring_savings(current_user) )) %></strong></td>
 	</tr>
 	<tr>
-		<td><strong>Disposable Income</strong></td>
+		<td><strong>Disposable Income Budget</strong></td>
 		<td class='cell-centre'><strong><%= current_user.percentage_of_income(current_user, current_user.disposable_income(current_user))%>%</strong></td>
 		<td><strong><%= @currency %><%= current_user.format_currency(current_user.disposable_income(current_user)) %></strong></td>
 	</tr>
@@ -52,6 +52,11 @@
 		<td><strong>Daily Spending Total</strong></td>
 		<td class='cell-centre'><strong>100.0%</strong></td>
 		<td><strong><%= @currency %><%= current_user.daily_spending_total(current_user) %></strong></td>
+	</tr>
+	<tr>
+		<td><strong>Budget left for the month</strong></td>
+		<td></td>
+		<td><strong><%= @currency %><%= current_user.format_currency(current_user.disposable_income(current_user) - current_user.daily_spending_total(current_user))%> </strong></td>
 	</tr>
 </table>
 <br >
